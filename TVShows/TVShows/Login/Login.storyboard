@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2rn-aC-auo">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -36,6 +36,9 @@
                                 <state key="normal" title="TOGGLE INDICATOR">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="toggleIndicatorTapped:" destination="2rn-aC-auo" eventType="touchUpInside" id="b3t-wZ-ht9"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Count" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GbG-pF-6JX">
                                 <rect key="frame" x="116" y="252" width="271" height="126"/>
@@ -50,11 +53,20 @@
                                 <state key="normal" title="1" backgroundImage="plus">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="addOneTapped:" destination="2rn-aC-auo" eventType="touchUpInside" id="7fP-SV-vvN"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6Ly-8X-Zqk"/>
                     </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="jgc-cn-9Bd" id="Pjh-Wu-pYY"/>
+                        <outlet property="secondsLeftLabel" destination="Bby-en-82t" id="yze-wS-eMc"/>
+                        <outlet property="tapCounterLabel" destination="GbG-pF-6JX" id="7ZE-fO-oIe"/>
+                        <outlet property="toggleIndicatorButton" destination="cfM-RN-ktg" id="YHG-Qg-R3J"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ouI-Nv-Bvn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
