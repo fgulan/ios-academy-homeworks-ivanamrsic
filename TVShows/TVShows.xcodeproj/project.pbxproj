@@ -19,8 +19,6 @@
 		A850EFBB20F73F5A0031DFC6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A8ECC61420EE6F2100E76676 /* TVShows.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TVShows.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8ECC61720EE6F2100E76676 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A8ECC61920EE6F2100E76676 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		A8ECC61C20EE6F2100E76676 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A8ECC61E20EE6F2200E76676 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A8ECC62120EE6F2200E76676 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A8ECC62320EE6F2200E76676 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -67,8 +65,6 @@
 			children = (
 				A850EFB820F73F3C0031DFC6 /* Login */,
 				A8ECC61720EE6F2100E76676 /* AppDelegate.swift */,
-				A8ECC61920EE6F2100E76676 /* ViewController.swift */,
-				A8ECC61B20EE6F2100E76676 /* Main.storyboard */,
 				A8ECC61E20EE6F2200E76676 /* Assets.xcassets */,
 				A8ECC62020EE6F2200E76676 /* LaunchScreen.storyboard */,
 				A8ECC62320EE6F2200E76676 /* Info.plist */,
@@ -155,14 +151,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		A8ECC61B20EE6F2100E76676 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A8ECC61C20EE6F2100E76676 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		A8ECC62020EE6F2200E76676 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
