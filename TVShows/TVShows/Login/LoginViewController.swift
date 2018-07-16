@@ -2,7 +2,7 @@
 //  LoginViewController.swift
 //  TVShows
 //
-//  Created by Ivana Mrsic on 12/07/2018.
+//  Created by Ivana Mrsic on 15/07/2018.
 //  Copyright © 2018 Ivana Mrsic. All rights reserved.
 //
 
@@ -10,56 +10,46 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
-    @IBOutlet weak var secondsLeftLabel: UILabel!
-    @IBOutlet weak var toggleIndicatorButton: UIButton!
-    @IBOutlet weak var tapCounterLabel: UILabel!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-
-    var timer: Timer = Timer()
+    @IBOutlet weak var usernameLabel: UITextField!
+    @IBOutlet weak var passwordLabel: UITextField!
     
-    var indicatorToggler: Bool = true
-    var tapCounter: Int = 0
-    var timeRemaining: Int = 3
+    @IBOutlet weak var logInButton: UIButton!
+    @IBOutlet weak var rememberMeButton: UIButton!
     
-    @IBAction func toggleIndicatorTapped(_ sender: Any) {
-        self.toggleIndicator()
-    }
-    
-    @IBAction func addOneTapped(_ sender: Any) {
-        self.tapCounter += 1
-        tapCounterLabel.text = String(tapCounter)
-        print("tap")
-    }
-    
-    func toggleIndicator() {
-        if (!self.indicatorToggler) {
-            activityIndicator.startAnimating()
-        } else {
-            activityIndicator.stopAnimating()
-        }
-        self.indicatorToggler = !self.indicatorToggler
-    }
+    var isRemeberMeButtonChecked: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        timeRemaining = 3
-        secondsLeftLabel.text = String(timeRemaining)
-        activityIndicator.startAnimating()
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(timerRunning), userInfo: nil, repeats: true)
+        self.navigationController?.isNavigationBarHidden = true
+
+        usernameLabel.setBottomBorder()
+        passwordLabel.setBottomBorder()
         
-        toggleIndicatorButton.layer.cornerRadius = 25
-        tapCounterLabel.text = String(tapCounter)
+        logInButton.layer.cornerRadius = 10
     }
     
-    @objc
-    func timerRunning() {
-        timeRemaining -= 1
-        secondsLeftLabel.text = String(timeRemaining)
+    @IBAction func remeberMeTapped(_ sender: Any) {
+        isRemeberMeButtonChecked = !isRemeberMeButtonChecked
         
-        if(timeRemaining < 1) {
-            timer.invalidate()
-            toggleIndicator()
+        if(isRemeberMeButtonChecked) {
+            rememberMeButton.setImage( UIImage(named: "ic-checkbox-filled"), for: UIControlState.normal )
+        } else {
+            rememberMeButton.setImage( UIImage(named: "ic-checkbox-empty"), for: UIControlState.normal )
         }
+        
+    }
+}
+
+extension UITextField {
+    func setBottomBorder() {
+        self.borderStyle = .none
+        self.layer.backgroundColor = UIColor.white.cgColor
+        
+        self.layer.masksToBounds = false
+        self.layer.shadowColor = UIColor.gray.cgColor
+        self.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
+        self.layer.shadowOpacity = 0.3
+        self.layer.shadowRadius = 0.0
     }
 }
