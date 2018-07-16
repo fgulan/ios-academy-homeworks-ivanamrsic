@@ -14,6 +14,9 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordLabel: UITextField!
     
     @IBOutlet weak var logInButton: UIButton!
+    @IBOutlet weak var rememberMeButton: UIButton!
+    
+    var isRemeberMeButtonChecked: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,9 +28,18 @@ class LoginViewController: UIViewController {
         
         logInButton.layer.cornerRadius = 10
     }
-
+    
+    @IBAction func remeberMeTapped(_ sender: Any) {
+        isRemeberMeButtonChecked = !isRemeberMeButtonChecked
+        
+        if(isRemeberMeButtonChecked) {
+            rememberMeButton.setImage( UIImage(named: "ic-checkbox-filled"), for: UIControlState.normal )
+        } else {
+            rememberMeButton.setImage( UIImage(named: "ic-checkbox-empty"), for: UIControlState.normal )
+        }
+        
+    }
 }
-
 
 extension UITextField {
     func setBottomBorder() {

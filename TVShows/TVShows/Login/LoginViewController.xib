@@ -15,6 +15,7 @@
             <connections>
                 <outlet property="logInButton" destination="TLl-bW-vvW" id="qLA-n2-hKY"/>
                 <outlet property="passwordLabel" destination="b3N-XM-FbW" id="6P9-Ea-keZ"/>
+                <outlet property="rememberMeButton" destination="j1N-7s-PLq" id="KSq-r1-1BN"/>
                 <outlet property="usernameLabel" destination="RP1-2b-F5I" id="dJT-qH-txC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -59,6 +60,9 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j1N-7s-PLq">
                                                     <rect key="frame" x="0.0" y="0.0" width="33.5" height="24"/>
                                                     <state key="normal" title="Button" image="ic-checkbox-empty"/>
+                                                    <connections>
+                                                        <action selector="remeberMeTapped:" destination="-1" eventType="touchUpInside" id="eTt-pl-k7r"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I1h-by-RCH">
                                                     <rect key="frame" x="33.5" y="0.0" width="304" height="24"/>
