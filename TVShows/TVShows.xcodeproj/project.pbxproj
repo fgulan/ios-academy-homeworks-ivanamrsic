@@ -10,6 +10,8 @@
 		516189F03F38B6A3FF87814D /* Pods_TVShows.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAF967214026323383A8FC22 /* Pods_TVShows.framework */; };
 		A842D77D20FB958800143F65 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A842D77B20FB958800143F65 /* LoginViewController.swift */; };
 		A842D77E20FB958800143F65 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A842D77C20FB958800143F65 /* LoginViewController.xib */; };
+		A842D85E20FFAED600143F65 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A842D85C20FFAED600143F65 /* HomeViewController.swift */; };
+		A842D85F20FFAED600143F65 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A842D85D20FFAED600143F65 /* HomeViewController.xib */; };
 		A8ECC61820EE6F2100E76676 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8ECC61720EE6F2100E76676 /* AppDelegate.swift */; };
 		A8ECC61F20EE6F2200E76676 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8ECC61E20EE6F2200E76676 /* Assets.xcassets */; };
 		A8ECC62220EE6F2200E76676 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8ECC62020EE6F2200E76676 /* LaunchScreen.storyboard */; };
@@ -20,6 +22,8 @@
 		7F97F531DCF3A79FD0AA20F6 /* Pods-TVShows.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TVShows.release.xcconfig"; path = "Pods/Target Support Files/Pods-TVShows/Pods-TVShows.release.xcconfig"; sourceTree = "<group>"; };
 		A842D77B20FB958800143F65 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A842D77C20FB958800143F65 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		A842D85C20FFAED600143F65 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		A842D85D20FFAED600143F65 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		A8ECC61420EE6F2100E76676 /* TVShows.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TVShows.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8ECC61720EE6F2100E76676 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8ECC61E20EE6F2200E76676 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -46,6 +50,15 @@
 				EAF967214026323383A8FC22 /* Pods_TVShows.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A842D85B20FFAEC300143F65 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				A842D85C20FFAED600143F65 /* HomeViewController.swift */,
+				A842D85D20FFAED600143F65 /* HomeViewController.xib */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		A850EFB820F73F3C0031DFC6 /* Login */ = {
@@ -78,6 +91,7 @@
 		A8ECC61620EE6F2100E76676 /* TVShows */ = {
 			isa = PBXGroup;
 			children = (
+				A842D85B20FFAEC300143F65 /* Home */,
 				A850EFB820F73F3C0031DFC6 /* Login */,
 				A8ECC61720EE6F2100E76676 /* AppDelegate.swift */,
 				A8ECC61E20EE6F2200E76676 /* Assets.xcassets */,
@@ -160,6 +174,7 @@
 				A8ECC62220EE6F2200E76676 /* LaunchScreen.storyboard in Resources */,
 				A8ECC61F20EE6F2200E76676 /* Assets.xcassets in Resources */,
 				A842D77E20FB958800143F65 /* LoginViewController.xib in Resources */,
+				A842D85F20FFAED600143F65 /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,6 +243,7 @@
 			files = (
 				A842D77D20FB958800143F65 /* LoginViewController.swift in Sources */,
 				A8ECC61820EE6F2100E76676 /* AppDelegate.swift in Sources */,
+				A842D85E20FFAED600143F65 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

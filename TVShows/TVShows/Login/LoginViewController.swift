@@ -39,6 +39,18 @@ class LoginViewController: UIViewController {
         }
         
     }
+    @IBAction func createAccountTapped(_ sender: Any) {
+        navigateToHomeViewController()
+    }
+    @IBAction func logInTapped(_ sender: Any) {
+        navigateToHomeViewController()
+    }
+    
+    
+    func navigateToHomeViewController() {
+        let homeViewController = HomeViewController()
+        self.navigationController?.pushViewController(homeViewController, animated: true)
+    }
 }
 
 extension UITextField {
