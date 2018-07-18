@@ -14,9 +14,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="TVShows" customModuleProvider="target">
             <connections>
                 <outlet property="logInButton" destination="TLl-bW-vvW" id="qLA-n2-hKY"/>
-                <outlet property="passwordLabel" destination="b3N-XM-FbW" id="6P9-Ea-keZ"/>
+                <outlet property="passwordTextField" destination="b3N-XM-FbW" id="6P9-Ea-keZ"/>
                 <outlet property="rememberMeButton" destination="j1N-7s-PLq" id="KSq-r1-1BN"/>
-                <outlet property="usernameLabel" destination="RP1-2b-F5I" id="dJT-qH-txC"/>
+                <outlet property="usernameTextField" destination="RP1-2b-F5I" id="dJT-qH-txC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

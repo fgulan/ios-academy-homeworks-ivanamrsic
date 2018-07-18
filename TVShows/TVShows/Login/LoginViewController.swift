@@ -7,24 +7,27 @@
 //
 
 import UIKit
+import Alamofire
+import SVProgressHUD
 
 class LoginViewController: UIViewController {
 
-    @IBOutlet weak var usernameLabel: UITextField!
-    @IBOutlet weak var passwordLabel: UITextField!
+    @IBOutlet private weak var usernameTextField: UITextField!
+    @IBOutlet private weak var passwordTextField: UITextField!
     
-    @IBOutlet weak var logInButton: UIButton!
-    @IBOutlet weak var rememberMeButton: UIButton!
+    @IBOutlet private weak var logInButton: UIButton!
+    @IBOutlet private weak var rememberMeButton: UIButton!
     
-    var isRemeberMeButtonChecked: Bool = false
+    private var isRemeberMeButtonChecked: Bool = false
+    private var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationController?.isNavigationBarHidden = true
 
-        usernameLabel.setBottomBorder()
-        passwordLabel.setBottomBorder()
+        usernameTextField.setBottomBorder()
+        passwordTextField.setBottomBorder()
         
         logInButton.layer.cornerRadius = 10
     }
@@ -40,14 +43,112 @@ class LoginViewController: UIViewController {
         
     }
     @IBAction func createAccountTapped(_ sender: Any) {
-        navigateToHomeViewController()
+    
+        guard let username = usernameTextField.text, let password = passwordTextField.text else {
+            return
+        }
+        
+        registerUser(email: username, password: password)
     }
+    
     @IBAction func logInTapped(_ sender: Any) {
-        navigateToHomeViewController()
+        
+        guard let username = usernameTextField.text, let password = passwordTextField.text else {
+            return
+        }
+        
+        loginUser(email: username, password: password)
     }
     
+    private func registerUser(email: String, password: String) {
+        SVProgressHUD.show()
+        
+        let parameters: [String: String] = [
+            "email": email,
+            "password": password
+        ]
+        
+        Alamofire
+            .request(REGISTER_USER_URL,
+                     method: .post,
+                     parameters: parameters,
+                     encoding: JSONEncoding.default)
+            .validate()
+            .responseJSON { [weak self] dataResponse in
+                
+                SVProgressHUD.dismiss()
+                
+                switch dataResponse.result {
+                case .success(let response):
+                    
+                    guard let jsonDict = response as? Dictionary<String, Any> else {
+                        return
+                    }
+                    
+                    guard
+                        let dataDict = jsonDict["data"],
+                        let dataBinary = try? JSONSerialization.data(withJSONObject: dataDict) else {
+                            return
+                    }
+                    
+                    do {
+                        let newUser = try JSONDecoder().decode(User.self, from: dataBinary)
+                        self?.user = newUser
+                        print("Success: \(newUser)")
+                    } catch let error {
+                        print("Serialization error: \(error)")
+                    }
+                    
+                case .failure(let error):
+                    print("API failure: \(error)")
+                }
+        }
+    }
     
-    func navigateToHomeViewController() {
+    private func loginUser(email: String, password: String) {
+        SVProgressHUD.show()
+        
+        let parameters: [String: String] = [
+            "email": email,
+            "password": password
+        ]
+        
+        Alamofire
+            .request(LOGIN_USER_URL,
+                     method: .post,
+                     parameters: parameters,
+                     encoding: JSONEncoding.default)
+            .validate()
+            .responseJSON { [weak self] dataResponse in
+                
+                switch dataResponse.result {
+                case .success(let response):
+                    guard let jsonDict = response as? Dictionary<String, Any> else {
+                        return
+                    }
+                    
+                    guard
+                        let dataDict = jsonDict["data"],
+                        let dataBinary = try? JSONSerialization.data(withJSONObject: dataDict) else {
+                            return
+                    }
+                    do {
+                        let loggedUser = try JSONDecoder().decode(LoginData.self, from: dataBinary)
+                        SVProgressHUD.showSuccess(withStatus: "Success")
+                        print("Success: \(loggedUser)")
+                        self?.navigateToHomeViewController()
+                    } catch let error {
+                        print("Error: \(error)")
+                    }
+                case .failure(let error):
+                    print("API failure: \(error)")
+                    SVProgressHUD.showError(withStatus: "Failure")
+                }
+        }
+    }
+
+    
+    private func navigateToHomeViewController() {
         let homeViewController = HomeViewController()
         self.navigationController?.pushViewController(homeViewController, animated: true)
     }

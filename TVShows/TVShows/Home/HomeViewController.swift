@@ -7,12 +7,19 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class HomeViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.navigationController?.isNavigationBarHidden = false
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        SVProgressHUD.dismiss()
+
     }
 }
