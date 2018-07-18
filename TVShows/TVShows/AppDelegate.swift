@@ -17,10 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
    
-        let vc = LoginViewController()
-        let nvc = UINavigationController(rootViewController: vc)
-        nvc.navigationBar.isTranslucent = false
-        window?.rootViewController = nvc
+        let loginViewController = LoginViewController()
+        let navigationViewController = UINavigationController(rootViewController: loginViewController)
+        navigationViewController.navigationBar.isTranslucent = false
+        window?.rootViewController = navigationViewController
         window?.makeKeyAndVisible()
         return true
     }
