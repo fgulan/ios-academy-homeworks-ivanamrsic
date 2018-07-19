@@ -10,6 +10,9 @@ import UIKit
 import Alamofire
 import SVProgressHUD
 
+let REGISTER_USER_URL = "https://api.infinum.academy/api/users"
+let LOGIN_USER_URL = "https://api.infinum.academy/api/users/sessions"
+
 class LoginViewController: UIViewController {
 
     @IBOutlet private weak var usernameTextField: UITextField!
@@ -23,8 +26,6 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationController?.isNavigationBarHidden = true
 
         usernameTextField.setBottomBorder()
         passwordTextField.setBottomBorder()
@@ -32,16 +33,22 @@ class LoginViewController: UIViewController {
         logInButton.layer.cornerRadius = 10
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
     @IBAction func remeberMeTapped(_ sender: Any) {
         isRemeberMeButtonChecked = !isRemeberMeButtonChecked
         
-        if(isRemeberMeButtonChecked) {
-            rememberMeButton.setImage( UIImage(named: "ic-checkbox-filled"), for: UIControlState.normal )
+        if isRemeberMeButtonChecked {
+            rememberMeButton.setImage(UIImage(named: "ic-checkbox-filled"), for: UIControlState.normal)
         } else {
-            rememberMeButton.setImage( UIImage(named: "ic-checkbox-empty"), for: UIControlState.normal )
+            rememberMeButton.setImage(UIImage(named: "ic-checkbox-empty"), for: UIControlState.normal)
         }
         
     }
+    
     @IBAction func createAccountTapped(_ sender: Any) {
     
         guard let username = usernameTextField.text, let password = passwordTextField.text else {
@@ -94,6 +101,8 @@ class LoginViewController: UIViewController {
                     do {
                         let newUser = try JSONDecoder().decode(User.self, from: dataBinary)
                         self?.user = newUser
+                        
+                        self?.loginUser(email: email, password: password)
                         print("Success: \(newUser)")
                     } catch let error {
                         print("Serialization error: \(error)")
@@ -120,30 +129,33 @@ class LoginViewController: UIViewController {
                      encoding: JSONEncoding.default)
             .validate()
             .responseJSON { [weak self] dataResponse in
+                SVProgressHUD.dismiss()
                 
                 switch dataResponse.result {
-                case .success(let response):
-                    guard let jsonDict = response as? Dictionary<String, Any> else {
-                        return
-                    }
-                    
-                    guard
-                        let dataDict = jsonDict["data"],
-                        let dataBinary = try? JSONSerialization.data(withJSONObject: dataDict) else {
+                    case .success(let response):
+                        guard let jsonDict = response as? Dictionary<String, Any> else {
                             return
+                        }
+                        
+                        guard
+                            let dataDict = jsonDict["data"],
+                            let dataBinary = try? JSONSerialization.data(withJSONObject: dataDict) else {
+                                return
+                        }
+                        
+                        do {
+                            
+                            let loggedUser = try JSONDecoder().decode(LoginData.self, from: dataBinary)
+                            print("Success: \(loggedUser)")
+                            self?.navigateToHomeViewController()
+                            
+                        } catch let error {
+                            print("Error: \(error)")
+                        }
+                    
+                    case .failure(let error):
+                        print("API failure: \(error)")
                     }
-                    do {
-                        let loggedUser = try JSONDecoder().decode(LoginData.self, from: dataBinary)
-                        SVProgressHUD.showSuccess(withStatus: "Success")
-                        print("Success: \(loggedUser)")
-                        self?.navigateToHomeViewController()
-                    } catch let error {
-                        print("Error: \(error)")
-                    }
-                case .failure(let error):
-                    print("API failure: \(error)")
-                    SVProgressHUD.showError(withStatus: "Failure")
-                }
         }
     }
 
@@ -151,18 +163,5 @@ class LoginViewController: UIViewController {
     private func navigateToHomeViewController() {
         let homeViewController = HomeViewController()
         self.navigationController?.pushViewController(homeViewController, animated: true)
-    }
-}
-
-extension UITextField {
-    func setBottomBorder() {
-        self.borderStyle = .none
-        self.layer.backgroundColor = UIColor.white.cgColor
-        
-        self.layer.masksToBounds = false
-        self.layer.shadowColor = UIColor.gray.cgColor
-        self.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
-        self.layer.shadowOpacity = 0.3
-        self.layer.shadowRadius = 0.0
     }
 }

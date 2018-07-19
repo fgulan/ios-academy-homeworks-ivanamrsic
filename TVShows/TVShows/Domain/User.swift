@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct User: Codable { /* typealias Codable = Encodable & Decodable */
+struct User: Codable {
     let email: String
     let type: String
     let id: String

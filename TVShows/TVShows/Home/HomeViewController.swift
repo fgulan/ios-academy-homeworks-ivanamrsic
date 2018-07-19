@@ -17,9 +17,4 @@ class HomeViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = false
         
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        SVProgressHUD.dismiss()
-
-    }
 }
