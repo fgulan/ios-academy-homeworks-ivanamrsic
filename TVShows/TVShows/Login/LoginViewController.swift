@@ -46,7 +46,6 @@ class LoginViewController: UIViewController {
         } else {
             rememberMeButton.setImage(UIImage(named: "ic-checkbox-empty"), for: UIControlState.normal)
         }
-        
     }
     
     @IBAction func createAccountTapped(_ sender: Any) {
@@ -158,7 +157,6 @@ class LoginViewController: UIViewController {
                     }
         }
     }
-
     
     private func navigateToHomeViewController() {
         let homeViewController = HomeViewController()

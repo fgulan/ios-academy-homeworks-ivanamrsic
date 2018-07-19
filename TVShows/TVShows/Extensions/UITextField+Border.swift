@@ -12,7 +12,6 @@ extension UITextField {
     func setBottomBorder() {
         borderStyle = .none
         layer.backgroundColor = UIColor.white.cgColor
-        
         layer.masksToBounds = false
         layer.shadowColor = UIColor.gray.cgColor
         layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
