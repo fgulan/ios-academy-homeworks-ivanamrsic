@@ -14,9 +14,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="TVShows" customModuleProvider="target">
             <connections>
                 <outlet property="logInButton" destination="TLl-bW-vvW" id="qLA-n2-hKY"/>
-                <outlet property="passwordLabel" destination="b3N-XM-FbW" id="6P9-Ea-keZ"/>
+                <outlet property="passwordTextField" destination="b3N-XM-FbW" id="6P9-Ea-keZ"/>
                 <outlet property="rememberMeButton" destination="j1N-7s-PLq" id="KSq-r1-1BN"/>
-                <outlet property="usernameLabel" destination="RP1-2b-F5I" id="dJT-qH-txC"/>
+                <outlet property="usernameTextField" destination="RP1-2b-F5I" id="dJT-qH-txC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -84,6 +84,9 @@
                                                     <state key="normal" title="LOG IN">
                                                         <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="logInTapped:" destination="-1" eventType="touchUpInside" id="yiv-2I-Dic"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lQV-Mh-zfs">
                                                     <rect key="frame" x="0.0" y="55.5" width="337.5" height="18"/>
@@ -96,6 +99,9 @@
                                                     <state key="normal" title="Create an account">
                                                         <color key="titleColor" red="1" green="0.45882352939999999" blue="0.54901960780000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="createAccountTapped:" destination="-1" eventType="touchUpInside" id="E5c-PY-vES"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
