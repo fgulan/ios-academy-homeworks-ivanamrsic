@@ -15,17 +15,22 @@ let FETCH_SHOWS_URL = "https://api.infinum.academy/api/shows"
 
 class HomeViewController: UIViewController {
     
+    @IBOutlet weak var showsTableView: UITableView!
+    
     var token: String?
     var shows: [Show] = []
     
+    let cellReuseIdentifier = "showTableViewCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        showsTableView.delegate = self
+        showsTableView.dataSource = self
+        showsTableView.register(UINib(nibName: "ShowTableViewCell", bundle: nil), forCellReuseIdentifier: cellReuseIdentifier)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.isNavigationBarHidden = false
-        
         fetchTvShows()
     }
     
@@ -51,11 +56,36 @@ class HomeViewController: UIViewController {
                 switch dataResponse.result {
                 case .success(let shows):
                     self?.shows = shows
+                    self?.showsTableView.reloadData()
                 case .failure(let error):
                     print("API failure: \(error)")
                 }
         }
-        
     }
+}
+
+extension HomeViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+}
+
+extension HomeViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath) as! ShowTableViewCell
         
+        let show = shows[indexPath.row];
+        
+        cell.setup(show: show);
+        
+        return cell
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return shows.count
+    }
 }
