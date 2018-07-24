@@ -146,7 +146,7 @@ class LoginViewController: UIViewController {
                             
                             let loggedUser = try JSONDecoder().decode(LoginData.self, from: dataBinary)
                             print("Success: \(loggedUser)")
-                            self?.navigateToHomeViewController()
+                            self?.navigateToHomeViewController(token: loggedUser.token)
                             
                         } catch let error {
                             print("Error: \(error)")
@@ -158,8 +158,9 @@ class LoginViewController: UIViewController {
         }
     }
     
-    private func navigateToHomeViewController() {
+    private func navigateToHomeViewController(token: String) {
         let homeViewController = HomeViewController()
+        homeViewController.token = token
         self.navigationController?.pushViewController(homeViewController, animated: true)
     }
 }
