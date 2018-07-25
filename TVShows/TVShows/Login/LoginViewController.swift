@@ -146,21 +146,37 @@ class LoginViewController: UIViewController {
                             
                             let loggedUser = try JSONDecoder().decode(LoginData.self, from: dataBinary)
                             print("Success: \(loggedUser)")
-                            self?.navigateToHomeViewController(token: loggedUser.token)
+                            self?.navigateToHomeViewController(loginData: loggedUser)
                             
                         } catch let error {
                             print("Error: \(error)")
                         }
                     
                     case .failure(let error):
+                        self?.failedLoginAlert()
                         print("API failure: \(error)")
                     }
         }
     }
     
-    private func navigateToHomeViewController(token: String) {
+    private func failedLoginAlert() {
+        let alertController = UIAlertController(title: "Login failure", message: "Incorrect email or password", preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Try again", style: .cancel, handler: {(alert: UIAlertAction!) in self.resetInputFields()})
+        
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    private func resetInputFields() {
+        self.usernameTextField.text = ""
+        self.passwordTextField.text = ""
+    }
+    
+    private func navigateToHomeViewController(loginData: LoginData) {
         let homeViewController = HomeViewController()
-        homeViewController.token = token
+        homeViewController.loginData = loginData
         self.navigationController?.pushViewController(homeViewController, animated: true)
     }
 }

@@ -17,31 +17,35 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var showsTableView: UITableView!
     
-    var token: String?
-    var shows: [Show] = []
+    var loginData: LoginData?
+    private var shows: [Show] = []
     
     let cellReuseIdentifier = "showTableViewCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        showsTableView.delegate = self
-        showsTableView.dataSource = self
-        showsTableView.register(UINib(nibName: "ShowTableViewCell", bundle: nil), forCellReuseIdentifier: cellReuseIdentifier)
+        setupTableView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         fetchTvShows()
     }
     
+    private func setupTableView() {
+        showsTableView.delegate = self
+        showsTableView.dataSource = self
+        showsTableView.register(UINib(nibName: "ShowTableViewCell", bundle: nil), forCellReuseIdentifier: cellReuseIdentifier)
+    }
+    
     private func fetchTvShows() {
         SVProgressHUD.show()
         
-        guard let token = token else {
+        guard let loginData = loginData else {
             return
         }
         
-        let headers = ["Authorization": token]
+        let headers = ["Authorization": loginData.token]
      
         Alamofire
             .request(FETCH_SHOWS_URL,
