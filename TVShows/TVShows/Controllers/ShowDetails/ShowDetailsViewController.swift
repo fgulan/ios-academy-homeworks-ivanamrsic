@@ -120,10 +120,6 @@ class ShowDetailsViewController: UIViewController {
 
 
 extension ShowDetailsViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 100
-    }
-    
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
@@ -141,6 +137,7 @@ extension ShowDetailsViewController: UITableViewDataSource {
         } else if (currentRow == 1) {
             var cell = tableView.dequeueReusableCell(withIdentifier: descriptionCellIdentifier, for: indexPath) as! DescriptionTableViewCell
             cell.title = showInfo?.title
+            cell.episodeDescription = showInfo?.description
             cell.count = String(episodes.count)
             cell.setup()
             return cell

@@ -28,6 +28,16 @@
                     <rect key="frame" x="0.0" y="20" width="375" height="600.5"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mnN-5d-kNv">
+                    <rect key="frame" x="20" y="40" width="32" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="mnN-5d-kNv" secondAttribute="height" multiplier="1:1" id="F3o-qB-BxB"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="ic-navigate-back"/>
+                    <connections>
+                        <action selector="backTapped:" destination="-1" eventType="touchUpInside" id="0rF-6h-nPJ"/>
+                    </connections>
+                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8We-DJ-Mox">
                     <rect key="frame" x="328.5" y="620.5" width="46.5" height="46.5"/>
                     <constraints>
@@ -38,28 +48,18 @@
                         <action selector="addEpisodeTapped:" destination="-1" eventType="touchUpInside" id="6mO-O6-2Pb"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BiS-4Q-RAC">
-                    <rect key="frame" x="0.0" y="20" width="66.5" height="66.5"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="BiS-4Q-RAC" secondAttribute="height" multiplier="1:1" id="9A2-WQ-6p5"/>
-                    </constraints>
-                    <state key="normal" image="ic-navigate-back"/>
-                    <connections>
-                        <action selector="backTapped:" destination="-1" eventType="touchUpInside" id="fgr-z1-Gk0"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="8We-DJ-Mox" secondAttribute="bottom" id="5mz-LK-cwB"/>
                 <constraint firstItem="8We-DJ-Mox" firstAttribute="top" secondItem="OL7-bP-b4r" secondAttribute="bottom" id="C74-1v-zVL"/>
                 <constraint firstItem="OL7-bP-b4r" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.9" id="D6o-VA-ZGY"/>
+                <constraint firstItem="mnN-5d-kNv" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="EXV-fn-QSq"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="OL7-bP-b4r" secondAttribute="trailing" id="NRW-t4-G2r"/>
+                <constraint firstItem="mnN-5d-kNv" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="PeN-lr-3iZ"/>
                 <constraint firstItem="OL7-bP-b4r" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Rek-Er-u4T"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="BiS-4Q-RAC" secondAttribute="top" id="dgK-pb-L2Y"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="leading" secondItem="BiS-4Q-RAC" secondAttribute="leading" id="eET-hD-DSS"/>
+                <constraint firstItem="mnN-5d-kNv" firstAttribute="width" secondItem="mnN-5d-kNv" secondAttribute="height" multiplier="1:1" id="ZCe-2I-Otd"/>
                 <constraint firstItem="OL7-bP-b4r" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="hBJ-5x-Hll"/>
-                <constraint firstItem="BiS-4Q-RAC" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.1" id="j1P-8c-kQY"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="8We-DJ-Mox" secondAttribute="trailing" id="ux1-2j-Xd2"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

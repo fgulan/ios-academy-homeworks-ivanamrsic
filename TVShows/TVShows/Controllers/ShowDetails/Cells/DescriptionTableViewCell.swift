@@ -21,12 +21,15 @@ class DescriptionTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         titleLabel.text = ""
         countLabel.text = ""
+        descriptionLabel.text = ""
         title = ""
         count = ""
+        episodeDescription = ""
     }
 
     func setup() {        
         titleLabel.text = title
+        descriptionLabel.text = episodeDescription
         countLabel.text = count
     }
 }
