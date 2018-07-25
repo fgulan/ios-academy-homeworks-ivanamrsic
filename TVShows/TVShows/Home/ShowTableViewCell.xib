@@ -27,8 +27,8 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="bTx-jq-24Y" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="hO6-I9-OES"/>
-                    <constraint firstItem="bTx-jq-24Y" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="iMR-V6-i20"/>
+                    <constraint firstItem="bTx-jq-24Y" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="O7H-fR-r7o"/>
+                    <constraint firstItem="bTx-jq-24Y" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Xf5-0P-Ehy"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
