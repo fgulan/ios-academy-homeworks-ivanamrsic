@@ -10,6 +10,9 @@ import UIKit
 
 class DescriptionTableViewCell: UITableViewCell {
 
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var descriptionLabel: UILabel!
+    @IBOutlet private weak var countLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

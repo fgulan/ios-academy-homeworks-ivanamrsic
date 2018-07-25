@@ -6,8 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,21 +19,11 @@
                 <rect key="frame" x="0.0" y="0.0" width="311" height="244.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qld-56-kId">
-                        <rect key="frame" x="0.0" y="0.0" width="73.5" height="73.5"/>
-                        <constraints>
-                            <constraint firstAttribute="width" secondItem="qld-56-kId" secondAttribute="height" multiplier="1:1" id="ZFe-yt-Z1Q"/>
-                        </constraints>
-                        <state key="normal" title="Button" image="ic-navigate-back"/>
-                    </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qre-gj-8Pn">
                         <rect key="frame" x="0.0" y="0.0" width="311" height="244.5"/>
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="qld-56-kId" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="C5X-z3-JQi"/>
-                    <constraint firstItem="qld-56-kId" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.3" id="Hlj-fx-rLE"/>
-                    <constraint firstItem="qld-56-kId" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Zrb-vM-1zx"/>
                     <constraint firstAttribute="trailing" secondItem="qre-gj-8Pn" secondAttribute="trailing" id="efE-aC-oLx"/>
                     <constraint firstItem="qre-gj-8Pn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="gvH-75-eBC"/>
                     <constraint firstItem="qre-gj-8Pn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="jz4-z7-h5H"/>
@@ -44,13 +32,9 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="backButton" destination="qld-56-kId" id="tvu-oj-ybY"/>
                 <outlet property="imageView" destination="qre-gj-8Pn" id="aC4-09-Hxa"/>
             </connections>
             <point key="canvasLocation" x="87.5" y="154.5"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="ic-navigate-back" width="32" height="32"/>
-    </resources>
 </document>

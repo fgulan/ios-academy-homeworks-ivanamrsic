@@ -10,6 +10,8 @@ import UIKit
 
 class EpisodeTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var episodeNumberLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,4 +23,6 @@ class EpisodeTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func moreInfoTapped(_ sender: Any) {
+    }
 }

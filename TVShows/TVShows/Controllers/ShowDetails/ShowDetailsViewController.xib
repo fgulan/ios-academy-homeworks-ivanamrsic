@@ -38,6 +38,16 @@
                         <action selector="addEpisodeTapped:" destination="-1" eventType="touchUpInside" id="6mO-O6-2Pb"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BiS-4Q-RAC">
+                    <rect key="frame" x="0.0" y="20" width="66.5" height="66.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="BiS-4Q-RAC" secondAttribute="height" multiplier="1:1" id="9A2-WQ-6p5"/>
+                    </constraints>
+                    <state key="normal" image="ic-navigate-back"/>
+                    <connections>
+                        <action selector="backTapped:" destination="-1" eventType="touchUpInside" id="fgr-z1-Gk0"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -46,7 +56,10 @@
                 <constraint firstItem="OL7-bP-b4r" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.9" id="D6o-VA-ZGY"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="OL7-bP-b4r" secondAttribute="trailing" id="NRW-t4-G2r"/>
                 <constraint firstItem="OL7-bP-b4r" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Rek-Er-u4T"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="BiS-4Q-RAC" secondAttribute="top" id="dgK-pb-L2Y"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="leading" secondItem="BiS-4Q-RAC" secondAttribute="leading" id="eET-hD-DSS"/>
                 <constraint firstItem="OL7-bP-b4r" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="hBJ-5x-Hll"/>
+                <constraint firstItem="BiS-4Q-RAC" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.1" id="j1P-8c-kQY"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="8We-DJ-Mox" secondAttribute="trailing" id="ux1-2j-Xd2"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
@@ -54,5 +67,6 @@
     </objects>
     <resources>
         <image name="ic-fab-button" width="68" height="74"/>
+        <image name="ic-navigate-back" width="32" height="32"/>
     </resources>
 </document>
