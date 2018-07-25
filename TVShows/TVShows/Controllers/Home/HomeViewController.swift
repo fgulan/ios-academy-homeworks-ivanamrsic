@@ -29,6 +29,9 @@ class HomeViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+        
         fetchTvShows()
     }
     
@@ -66,6 +69,13 @@ class HomeViewController: UIViewController {
                 }
         }
     }
+    
+    private func navigateToShowDetails(row: Int) {
+        let showDetailsViewController = ShowDetailsViewController()
+        showDetailsViewController.showId = shows[row].id
+        showDetailsViewController.token = self.loginData?.token
+        self.navigationController?.pushViewController(showDetailsViewController, animated: true)
+    }
 }
 
 extension HomeViewController: UITableViewDelegate {
@@ -87,6 +97,10 @@ extension HomeViewController: UITableViewDelegate {
             self.showsTableView.deleteRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.automatic)
         }
         return [delete]
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.navigateToShowDetails(row: indexPath.row)
     }
 }
 
