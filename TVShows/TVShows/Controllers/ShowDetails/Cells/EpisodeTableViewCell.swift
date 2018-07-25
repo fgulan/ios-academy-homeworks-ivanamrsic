@@ -11,16 +11,22 @@ import UIKit
 class EpisodeTableViewCell: UITableViewCell {
 
     @IBOutlet weak var episodeNumberLabel: UILabel!
-    @IBOutlet weak var titleLabel: UILabel!
+
+    var episodeNumber: String?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        guard let episodeNumber = episodeNumber else {
+            return
+        }
+        
+        episodeNumberLabel.text = episodeNumber
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    override func prepareForReuse() {
+        episodeNumber = ""
+        episodeNumberLabel.text = ""
     }
     
     @IBAction func moreInfoTapped(_ sender: Any) {

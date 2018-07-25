@@ -24,14 +24,14 @@
                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aML-uT-QIR">
                         <rect key="frame" x="10" y="0.0" width="310" height="43.5"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yci-sa-RQZ" userLabel="EpisodeNumber">
-                                <rect key="frame" x="0.0" y="0.0" width="62" height="43.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Episodes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yci-sa-RQZ" userLabel="EpisodeNumber">
+                                <rect key="frame" x="0.0" y="0.0" width="77.5" height="43.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LgO-e7-PCT" userLabel="EpisodeTitle">
-                                <rect key="frame" x="62" y="0.0" width="205" height="43.5"/>
+                                <rect key="frame" x="77.5" y="0.0" width="189.5" height="43.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -48,7 +48,7 @@
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="Yci-sa-RQZ" firstAttribute="width" secondItem="aML-uT-QIR" secondAttribute="width" multiplier="0.2" id="X8N-YG-IyG"/>
+                            <constraint firstItem="Yci-sa-RQZ" firstAttribute="width" secondItem="aML-uT-QIR" secondAttribute="width" multiplier="0.25" id="X8N-YG-IyG"/>
                         </constraints>
                     </stackView>
                 </subviews>
@@ -61,8 +61,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="episodeNumberLabel" destination="Yci-sa-RQZ" id="Nhv-ve-LEX"/>
-                <outlet property="titleLabel" destination="LgO-e7-PCT" id="abn-zN-7Sc"/>
+                <outlet property="episodeNumberLabel" destination="LgO-e7-PCT" id="R0B-kX-Hh9"/>
             </connections>
         </tableViewCell>
     </objects>

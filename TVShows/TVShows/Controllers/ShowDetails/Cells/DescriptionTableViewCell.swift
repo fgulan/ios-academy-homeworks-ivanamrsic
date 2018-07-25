@@ -13,15 +13,20 @@ class DescriptionTableViewCell: UITableViewCell {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var countLabel: UILabel!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
+    var title: String?
+    var episodeDescription: String?
+    var count: String?
+    
+    override func prepareForReuse() {
+        titleLabel.text = ""
+        countLabel.text = ""
+        title = ""
+        count = ""
+    }
+
+    func setup() {        
+        titleLabel.text = title
+        countLabel.text = count
+    }
 }
