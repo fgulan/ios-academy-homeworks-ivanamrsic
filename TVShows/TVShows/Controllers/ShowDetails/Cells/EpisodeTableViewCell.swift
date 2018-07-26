@@ -35,7 +35,4 @@ class EpisodeTableViewCell: UITableViewCell {
         episodeNumberLabel.text = episodeNumber
         titleLabel.text = title
     }
-    
-    @IBAction func moreInfoTapped(_ sender: Any) {
-    }
 }

@@ -26,6 +26,7 @@ class AddEpisodeViewController: UIViewController {
     var delegate: AddEpisodeDelegate?
     
     var showId: String?
+    var token: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,11 +49,11 @@ class AddEpisodeViewController: UIViewController {
             let episodeTitleText = episodeTitleInputText.text,
             let episodeDescriptionText = episodeDescriptionInputText.text,
             let episodeNumberText = episodeNumberInputText.text,
-            let seasonNumberText = seasonNumberInputText.text
+            let seasonNumberText = seasonNumberInputText.text,
+            let token = token
         else {
             return
         }
-        
         
         let parameters: [String: String] = [
             "showId": showId,
@@ -62,11 +63,14 @@ class AddEpisodeViewController: UIViewController {
             "season": seasonNumberText
         ]
         
+        let headers = ["Authorization": token]
+        
         Alamofire
             .request(ADD_EPISODE_URL,
                      method: .post,
                      parameters: parameters,
-                     encoding: JSONEncoding.default)
+                     encoding: JSONEncoding.default,
+                     headers: headers)
             .validate()
             .responseJSON { [weak self] dataResponse in
                 SVProgressHUD.dismiss()

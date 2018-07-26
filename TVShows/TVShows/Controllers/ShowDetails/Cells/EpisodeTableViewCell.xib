@@ -43,9 +43,6 @@
                                     <constraint firstAttribute="width" secondItem="DPI-uO-Ern" secondAttribute="height" multiplier="1:1" id="Qtg-PS-Egx"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="ic-navigation-chevron-right-medium"/>
-                                <connections>
-                                    <action selector="moreInfoTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="zxz-gi-vVU"/>
-                                </connections>
                             </button>
                         </subviews>
                         <constraints>

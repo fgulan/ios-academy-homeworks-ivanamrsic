@@ -47,6 +47,7 @@ class ShowDetailsViewController: UIViewController {
         let addEpisodeViewController = AddEpisodeViewController()
         addEpisodeViewController.delegate = self
         addEpisodeViewController.showId = showId
+        addEpisodeViewController.token = token
         
         let navigationController = UINavigationController.init(rootViewController:
             addEpisodeViewController)
@@ -100,16 +101,19 @@ class ShowDetailsViewController: UIViewController {
     private func fetchEpisodes() {
         SVProgressHUD.show()
         
-        guard let showId = showId else {
+        guard let showId = showId, let token = token else {
             return
         }
         
         let path = constructFetchingShowEpisodesUrl(showId: showId)
         
+        let headers = ["Authorization": token]
+        
         Alamofire
             .request(path,
                      method: .get,
-                     encoding: URLEncoding.queryString)
+                     encoding: URLEncoding.queryString,
+                     headers: headers)
             .validate()
             .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) { [weak self] (dataResponse: DataResponse<[Episode]>) in
                 
@@ -126,11 +130,11 @@ class ShowDetailsViewController: UIViewController {
     }
     
     private func constructFetchingShowUrl(showId: String) -> String {
-        return FETCH_SHOW_INFO_URL + showId
+        return FETCH_SHOW_INFO_URL + "/" + showId
     }
     
     private func constructFetchingShowEpisodesUrl(showId: String) -> String {
-        return FETCH_SHOW_INFO_URL + showId + "/episodes"
+        return FETCH_SHOW_INFO_URL + "/" + showId + "/episodes"
     }
 }
 
