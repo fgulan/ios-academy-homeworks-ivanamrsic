@@ -22,22 +22,23 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aML-uT-QIR">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50.5"/>
+                        <rect key="frame" x="20" y="-3" width="300" height="50"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Episodes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yci-sa-RQZ" userLabel="EpisodeNumber">
-                                <rect key="frame" x="0.0" y="0.0" width="80" height="50.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="45" height="50"/>
+                                <color key="tintColor" red="1" green="0.45882352941176469" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
+                                <color key="textColor" red="1" green="0.45882352941176469" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" verticalCompressionResistancePriority="250" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LgO-e7-PCT" userLabel="EpisodeTitle">
-                                <rect key="frame" x="80" y="0.0" width="189.5" height="50.5"/>
+                                <rect key="frame" x="45" y="0.0" width="205.5" height="50"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPI-uO-Ern" userLabel="More">
-                                <rect key="frame" x="269.5" y="0.0" width="50.5" height="50.5"/>
+                                <rect key="frame" x="250.5" y="0.0" width="49.5" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="DPI-uO-Ern" secondAttribute="height" multiplier="1:1" id="Qtg-PS-Egx"/>
                                 </constraints>
@@ -48,22 +49,23 @@
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="Yci-sa-RQZ" firstAttribute="width" secondItem="aML-uT-QIR" secondAttribute="width" multiplier="0.25" id="X8N-YG-IyG"/>
+                            <constraint firstItem="Yci-sa-RQZ" firstAttribute="width" secondItem="aML-uT-QIR" secondAttribute="width" multiplier="0.15" id="X8N-YG-IyG"/>
                             <constraint firstAttribute="height" constant="50" id="vck-s0-UG3"/>
                         </constraints>
                     </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="aML-uT-QIR" secondAttribute="bottom" id="40x-Xv-5uc"/>
-                    <constraint firstItem="aML-uT-QIR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="9I5-qH-8m2"/>
-                    <constraint firstItem="aML-uT-QIR" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="OEJ-iT-6Xd"/>
-                    <constraint firstItem="aML-uT-QIR" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Teh-lr-Uci"/>
-                    <constraint firstItem="aML-uT-QIR" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="nfa-oO-P8E"/>
+                    <constraint firstItem="aML-uT-QIR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Owq-S0-sbf"/>
+                    <constraint firstAttribute="trailing" secondItem="aML-uT-QIR" secondAttribute="trailing" id="Zcv-Af-HuA"/>
                 </constraints>
             </tableViewCellContentView>
+            <constraints>
+                <constraint firstItem="aML-uT-QIR" firstAttribute="centerY" secondItem="njF-e1-oar" secondAttribute="centerY" id="iRj-ka-t9R"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="episodeNumberLabel" destination="LgO-e7-PCT" id="R0B-kX-Hh9"/>
+                <outlet property="episodeNumberLabel" destination="Yci-sa-RQZ" id="CNN-ED-jMG"/>
+                <outlet property="titleLabel" destination="LgO-e7-PCT" id="UuW-71-9nk"/>
             </connections>
         </tableViewCell>
     </objects>

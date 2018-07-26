@@ -36,6 +36,8 @@ class ShowDetailsViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
         
+        tableView.separatorColor = .white
+        
         fetchShowInformation()
         fetchEpisodes()
     }
@@ -121,7 +123,7 @@ class ShowDetailsViewController: UIViewController {
 
 extension ShowDetailsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 50
     }
 }
 
@@ -144,6 +146,9 @@ extension ShowDetailsViewController: UITableViewDataSource {
         } else {
             var cell: EpisodeTableViewCell
             cell = tableView.dequeueReusableCell(withIdentifier: episodeCellIdentifier, for: indexPath) as! EpisodeTableViewCell
+            cell.episodeNumber = String(indexPath.row - 2)
+            cell.title = episodes[indexPath.row - 2 ].title
+            cell.setup()
             return cell
         }
    
