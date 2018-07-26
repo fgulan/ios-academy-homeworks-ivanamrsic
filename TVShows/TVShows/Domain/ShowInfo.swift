@@ -18,10 +18,10 @@ struct ShowInfo: Codable {
     
     enum CodingKeys: String, CodingKey {
         case id = "_id"
-        case type = "type"
-        case title = "title"
-        case description = "description"
-        case likesCount = "likesCount"
-        case imageUrl = "imageUrl"
+        case type
+        case title
+        case description
+        case likesCount
+        case imageUrl
     }
 }

@@ -80,7 +80,6 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="33.5" y="53.5"/>
         </view>
-        <tapGestureRecognizer id="hkd-rF-pkz"/>
     </objects>
     <resources>
         <image name="ic-camera" width="24" height="24"/>

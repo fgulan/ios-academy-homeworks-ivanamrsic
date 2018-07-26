@@ -88,7 +88,6 @@ class AddEpisodeViewController: UIViewController {
                     }
                     
                     do {
-                        
                         let episode = try JSONDecoder().decode(Episode.self, from: dataBinary)
                         print("Success: \(episode)")
                         

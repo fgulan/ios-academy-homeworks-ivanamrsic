@@ -163,7 +163,6 @@ extension ShowDetailsViewController: UITableViewDataSource {
             let cell = setUpEpisodeCell(indexPath: indexPath)
             return cell
         }
-        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
