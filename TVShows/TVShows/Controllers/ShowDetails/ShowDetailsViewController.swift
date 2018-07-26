@@ -11,6 +11,7 @@ import Alamofire
 import SVProgressHUD
 
 let FETCH_SHOW_INFO_URL = "https://api.infinum.academy/api/shows"
+let NUMBER_OF_INFO_CELLS = 2
 
 class ShowDetailsViewController: UIViewController {
     
@@ -46,6 +47,7 @@ class ShowDetailsViewController: UIViewController {
         let addEpisodeViewController = AddEpisodeViewController()
         addEpisodeViewController.delegate = self
         addEpisodeViewController.showId = showId
+        
         let navigationController = UINavigationController.init(rootViewController:
             addEpisodeViewController)
         
@@ -74,7 +76,7 @@ class ShowDetailsViewController: UIViewController {
             return
         }
         
-        let path = FETCH_SHOW_INFO_URL + showId
+        let path = constructFetchingShowUrl(showId: showId)
         
         Alamofire
             .request(path,
@@ -98,13 +100,11 @@ class ShowDetailsViewController: UIViewController {
     private func fetchEpisodes() {
         SVProgressHUD.show()
         
-        guard
-            let showId = showId
-            else {
-                return
+        guard let showId = showId else {
+            return
         }
         
-        let path = FETCH_SHOW_INFO_URL + showId + "/episodes"
+        let path = constructFetchingShowEpisodesUrl(showId: showId)
         
         Alamofire
             .request(path,
@@ -118,12 +118,19 @@ class ShowDetailsViewController: UIViewController {
                 switch dataResponse.result {
                 case .success(let episodes):
                     self?.episodes = episodes
-                    print(episodes)
                     self?.tableView.reloadData()
                 case .failure(let error):
                     print("API failure: \(error)")
                 }
         }
+    }
+    
+    private func constructFetchingShowUrl(showId: String) -> String {
+        return FETCH_SHOW_INFO_URL + showId
+    }
+    
+    private func constructFetchingShowEpisodesUrl(showId: String) -> String {
+        return FETCH_SHOW_INFO_URL + showId + "/episodes"
     }
 }
 
@@ -138,27 +145,18 @@ extension ShowDetailsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let currentRow = indexPath.row
-    
         
         if (currentRow == 0) {
-            var cell = tableView.dequeueReusableCell(withIdentifier: showImageCellIdentifier, for: indexPath) as! ShowImageTableViewCell
+            let cell = setUpImageCell(indexPath: indexPath)
             return cell
         } else if (currentRow == 1) {
-            var cell = tableView.dequeueReusableCell(withIdentifier: descriptionCellIdentifier, for: indexPath) as! DescriptionTableViewCell
-            cell.title = showInfo?.title
-            cell.episodeDescription = showInfo?.description
-            cell.count = String(episodes.count)
-            cell.setup()
+            let cell = setUpDescriptionCell(indexPath: indexPath)
             return cell
         } else {
-            var cell: EpisodeTableViewCell
-            cell = tableView.dequeueReusableCell(withIdentifier: episodeCellIdentifier, for: indexPath) as! EpisodeTableViewCell
-            cell.episodeNumber = String(indexPath.row - 2)
-            cell.title = episodes[indexPath.row - 2 ].title
-            cell.setup()
+            let cell = setUpEpisodeCell(indexPath: indexPath)
             return cell
         }
-   
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -166,7 +164,7 @@ extension ShowDetailsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2 + episodes.count
+        return NUMBER_OF_INFO_CELLS + episodes.count
     }
 }
 
@@ -175,5 +173,29 @@ extension ShowDetailsViewController : AddEpisodeDelegate {
         episodes.append(episode)
         
         tableView.reloadData()
+    }
+}
+
+extension ShowDetailsViewController {
+    func setUpImageCell(indexPath: IndexPath) -> ShowImageTableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: showImageCellIdentifier, for: indexPath) as! ShowImageTableViewCell
+        return cell
+    }
+    
+    func setUpDescriptionCell(indexPath: IndexPath) -> DescriptionTableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: descriptionCellIdentifier, for: indexPath) as! DescriptionTableViewCell
+        cell.title = showInfo?.title
+        cell.episodeDescription = showInfo?.description
+        cell.count = String(episodes.count)
+        cell.setup()
+        return cell
+    }
+    
+    func setUpEpisodeCell(indexPath: IndexPath) -> EpisodeTableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: episodeCellIdentifier, for: indexPath) as! EpisodeTableViewCell
+        cell.episodeNumber = String(indexPath.row - NUMBER_OF_INFO_CELLS + 1)
+        cell.title = episodes[indexPath.row - NUMBER_OF_INFO_CELLS].title
+        cell.setup()
+        return cell
     }
 }
