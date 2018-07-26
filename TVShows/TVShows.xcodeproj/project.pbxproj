@@ -100,10 +100,9 @@
 		A842D85B20FFAEC300143F65 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				A8541ABA210A5F6800B35D75 /* Cells */,
 				A842D85C20FFAED600143F65 /* HomeViewController.swift */,
 				A842D85D20FFAED600143F65 /* HomeViewController.xib */,
-				A8DF0C932107C334002B83CD /* ShowTableViewCell.swift */,
-				A8DF0C942107C334002B83CD /* ShowTableViewCell.xib */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -135,6 +134,15 @@
 				A842D77C20FB958800143F65 /* LoginViewController.xib */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		A8541ABA210A5F6800B35D75 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A8DF0C932107C334002B83CD /* ShowTableViewCell.swift */,
+				A8DF0C942107C334002B83CD /* ShowTableViewCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		A8DF0CAD2108D42D002B83CD /* Controllers */ = {

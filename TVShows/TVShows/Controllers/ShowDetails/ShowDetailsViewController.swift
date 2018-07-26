@@ -15,18 +15,26 @@ let NUMBER_OF_INFO_CELLS = 2
 
 class ShowDetailsViewController: UIViewController {
     
+    //MARK:- IBOutlets
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addEpisodeButton: UIButton!
+    
+    //MARK:- public atributes
     
     var showId: String?
     var token: String?
     var showInfo: ShowInfo?
     var episodes: [Episode] = []
     
+    //MARK:- private atributes
+    
     private let showImageCellIdentifier = "showImageTableViewCell"
     private let episodeCellIdentifier = "episodeTableViewCell"
     private let descriptionCellIdentifier = "descriptionTableViewCell"
 
+    //MARK:- lifecycle methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,7 +50,9 @@ class ShowDetailsViewController: UIViewController {
         fetchShowInformation()
         fetchEpisodes()
     }
-
+    
+    //MARK:- IBActions
+    
     @IBAction func addEpisodeTapped(_ sender: Any) {
         let addEpisodeViewController = AddEpisodeViewController()
         addEpisodeViewController.delegate = self
@@ -59,14 +69,7 @@ class ShowDetailsViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    private func setupTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(UINib(nibName: "ShowImageTableViewCell", bundle: nil), forCellReuseIdentifier: showImageCellIdentifier)
-        tableView.register(UINib(nibName: "EpisodeTableViewCell", bundle: nil), forCellReuseIdentifier: episodeCellIdentifier)
-        tableView.register(UINib(nibName: "DescriptionTableViewCell", bundle: nil), forCellReuseIdentifier: descriptionCellIdentifier)
-    }
-    
+     // MARK: - api calls
     private func fetchShowInformation() {
         SVProgressHUD.show()
         
@@ -138,7 +141,7 @@ class ShowDetailsViewController: UIViewController {
     }
 }
 
-
+//MARK:- tableView
 extension ShowDetailsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
@@ -180,6 +183,8 @@ extension ShowDetailsViewController : AddEpisodeDelegate {
     }
 }
 
+
+// MARK:- setup
 extension ShowDetailsViewController {
     func setUpImageCell(indexPath: IndexPath) -> ShowImageTableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: showImageCellIdentifier, for: indexPath) as! ShowImageTableViewCell
@@ -201,5 +206,13 @@ extension ShowDetailsViewController {
         cell.title = episodes[indexPath.row - NUMBER_OF_INFO_CELLS].title
         cell.setup()
         return cell
+    }
+    
+    private func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UINib(nibName: "ShowImageTableViewCell", bundle: nil), forCellReuseIdentifier: showImageCellIdentifier)
+        tableView.register(UINib(nibName: "EpisodeTableViewCell", bundle: nil), forCellReuseIdentifier: episodeCellIdentifier)
+        tableView.register(UINib(nibName: "DescriptionTableViewCell", bundle: nil), forCellReuseIdentifier: descriptionCellIdentifier)
     }
 }

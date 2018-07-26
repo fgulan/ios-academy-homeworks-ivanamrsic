@@ -101,9 +101,20 @@ class AddEpisodeViewController: UIViewController {
                     }
                     
                 case .failure(let error):
+                    self?.failedAddEpisodeAlert()
                     print("API failure: \(error)")
                 }
         }
+    }
+    
+    private func failedAddEpisodeAlert() {
+        let alertController = UIAlertController(title: "Can't add episode", message: "Please check episode data", preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Okay", style: .default)
+        
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true, completion: nil)
     }
     
     private func setupViewController() {
