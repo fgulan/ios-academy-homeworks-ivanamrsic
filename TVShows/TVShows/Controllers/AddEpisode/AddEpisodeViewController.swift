@@ -20,6 +20,30 @@ class AddEpisodeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupViewController()
+    }
+    
+    @objc func didSelectCancel() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func didSelectAddEpisode() {
+        
+    }
+    
+    private func addEpisode() {
+        
+    }
+    
+    private func setupViewController() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(didSelectCancel))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(didSelectAddEpisode))
+        navigationItem.title = "Add episode"
+        
+        navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
+        navigationController?.navigationBar.backgroundColor = .white
+        navigationController?.navigationBar.isTranslucent = false
+
         episodeTitleInputText.setBottomBorder()
         seasonNumberInputText.setBottomBorder()
         episodeNumberInputText.setBottomBorder()

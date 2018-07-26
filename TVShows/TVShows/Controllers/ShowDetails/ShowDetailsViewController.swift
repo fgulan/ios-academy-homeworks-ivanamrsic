@@ -43,6 +43,12 @@ class ShowDetailsViewController: UIViewController {
     }
 
     @IBAction func addEpisodeTapped(_ sender: Any) {
+        let addEpisodeViewController = AddEpisodeViewController()
+        
+        let navigationController = UINavigationController.init(rootViewController:
+            addEpisodeViewController)
+        
+        present(navigationController, animated: true, completion: nil)
     }
     
     @IBAction func backTapped(_ sender: Any) {
