@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SVProgressHUD
 
-let FETCH_SHOW_INFO_URL = "https://api.infinum.academy/api/shows/"
+let FETCH_SHOW_INFO_URL = "https://api.infinum.academy/api/shows"
 
 class ShowDetailsViewController: UIViewController {
     
@@ -44,7 +44,8 @@ class ShowDetailsViewController: UIViewController {
 
     @IBAction func addEpisodeTapped(_ sender: Any) {
         let addEpisodeViewController = AddEpisodeViewController()
-        
+        addEpisodeViewController.delegate = self
+        addEpisodeViewController.showId = showId
         let navigationController = UINavigationController.init(rootViewController:
             addEpisodeViewController)
         
@@ -166,5 +167,13 @@ extension ShowDetailsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2 + episodes.count
+    }
+}
+
+extension ShowDetailsViewController : AddEpisodeDelegate {
+    func updateEpisodeList(episode: Episode) {
+        episodes.append(episode)
+        
+        tableView.reloadData()
     }
 }
