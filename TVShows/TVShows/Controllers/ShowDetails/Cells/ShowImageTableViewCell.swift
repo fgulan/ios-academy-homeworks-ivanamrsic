@@ -22,6 +22,7 @@ class ShowImageTableViewCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
+        super.prepareForReuse()
         imageUrl = ""
     }
     

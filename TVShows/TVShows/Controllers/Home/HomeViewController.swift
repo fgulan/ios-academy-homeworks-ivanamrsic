@@ -11,8 +11,6 @@ import SVProgressHUD
 import Alamofire
 import CodableAlamofire
 
-let FETCH_SHOWS_URL = "https://api.infinum.academy/api/shows"
-
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var showsTableView: UITableView!
@@ -30,7 +28,9 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+        navigationItem.title = "Shows"
+        navigationItem.setHidesBackButton(true, animated: false)
         
         fetchTvShows()
     }
@@ -51,7 +51,7 @@ class HomeViewController: UIViewController {
         let headers = ["Authorization": loginData.token]
      
         Alamofire
-            .request(FETCH_SHOWS_URL,
+            .request(Constants.URL.fetchShows,
                      method: .get,
                      encoding: JSONEncoding.default,
                      headers: headers)
@@ -79,22 +79,14 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Shows"
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 100
-    }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
 
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
-            self.shows.remove(at: indexPath.row)
-            self.showsTableView.deleteRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.automatic)
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { [weak self] (action, indexPath) in
+            self?.shows.remove(at: indexPath.row)
+            self?.showsTableView.deleteRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.automatic)
         }
         return [delete]
     }

@@ -10,9 +10,6 @@ import UIKit
 import Alamofire
 import SVProgressHUD
 
-let REGISTER_USER_URL = "https://api.infinum.academy/api/users"
-let LOGIN_USER_URL = "https://api.infinum.academy/api/users/sessions"
-
 class LoginViewController: UIViewController {
 
     @IBOutlet private weak var usernameTextField: UITextField!
@@ -74,7 +71,7 @@ class LoginViewController: UIViewController {
         ]
         
         Alamofire
-            .request(REGISTER_USER_URL,
+            .request(Constants.URL.registerUser,
                      method: .post,
                      parameters: parameters,
                      encoding: JSONEncoding.default)
@@ -121,7 +118,7 @@ class LoginViewController: UIViewController {
         ]
         
         Alamofire
-            .request(LOGIN_USER_URL,
+            .request(Constants.URL.loginUser,
                      method: .post,
                      parameters: parameters,
                      encoding: JSONEncoding.default)
@@ -176,6 +173,6 @@ class LoginViewController: UIViewController {
     private func navigateToHomeViewController(loginData: LoginData) {
         let homeViewController = HomeViewController()
         homeViewController.loginData = loginData
-        self.navigationController?.pushViewController(homeViewController, animated: true)
+        navigationController?.pushViewController(homeViewController, animated: true)
     }
 }

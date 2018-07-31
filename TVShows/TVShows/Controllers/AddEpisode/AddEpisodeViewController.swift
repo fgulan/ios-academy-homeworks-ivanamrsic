@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SVProgressHUD
+import CodableAlamofire
 
 let ADD_EPISODE_URL = "https://api.infinum.academy/api/episodes"
 
@@ -72,38 +73,21 @@ class AddEpisodeViewController: UIViewController {
                      encoding: JSONEncoding.default,
                      headers: headers)
             .validate()
-            .responseJSON { [weak self] dataResponse in
+            .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) { [weak self] (dataResponse: DataResponse<Episode>) in
+                
                 SVProgressHUD.dismiss()
                 
                 switch dataResponse.result {
-                case .success(let response):
-                    guard let jsonDict = response as? Dictionary<String, Any> else {
-                        return
+                case .success(let episode):
+                    if let delegate = self?.delegate {
+                        delegate.updateEpisodeList(episode: episode)
                     }
-                    
-                    guard
-                        let dataDict = jsonDict["data"],
-                        let dataBinary = try? JSONSerialization.data(withJSONObject: dataDict) else {
-                            return
-                    }
-                    
-                    do {
-                        let episode = try JSONDecoder().decode(Episode.self, from: dataBinary)
-                        print("Success: \(episode)")
-                        
-                        if let delegate = self?.delegate {
-                            delegate.updateEpisodeList(episode: episode)
-                        }
-                        self?.dismiss(animated: true, completion: nil)
-                    } catch let error {
-                        print("Error: \(error)")
-                    }
-                    
+                    self?.dismiss(animated: true, completion: nil)
                 case .failure(let error):
                     self?.failedAddEpisodeAlert()
                     print("API failure: \(error)")
                 }
-        }
+            }
     }
     
     private func failedAddEpisodeAlert() {

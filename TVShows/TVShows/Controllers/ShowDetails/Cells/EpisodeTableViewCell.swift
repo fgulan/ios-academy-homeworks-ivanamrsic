@@ -12,27 +12,20 @@ class EpisodeTableViewCell: UITableViewCell {
 
     @IBOutlet weak var episodeNumberLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
-    
-    var episodeNumber: String?
-    var title: String?
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
 
     override func prepareForReuse() {
-        episodeNumber = ""
+        super.prepareForReuse()
+        
         episodeNumberLabel.text = ""
-        title = ""
         titleLabel.text = ""
     }
     
-    func setup() {
-        guard let title = title, let episodeNumber = episodeNumber else {
-            return
-        }
-        
+    func setup(episodeNumber: String, episodeTitle: String) {
         episodeNumberLabel.text = episodeNumber
-        titleLabel.text = title
+        titleLabel.text = episodeTitle
     }
 }
