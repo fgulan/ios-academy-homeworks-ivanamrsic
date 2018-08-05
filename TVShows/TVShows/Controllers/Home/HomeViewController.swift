@@ -30,7 +30,7 @@ class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
         navigationItem.title = "Shows"
-        navigationItem.setHidesBackButton(true, animated: false)
+        //navigationItem.setHidesBackButton(true, animated: false)
         
         fetchTvShows()
     }

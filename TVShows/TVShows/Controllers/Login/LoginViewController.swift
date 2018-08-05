@@ -12,14 +12,21 @@ import SVProgressHUD
 
 class LoginViewController: UIViewController {
 
+    // MARK: - IBOutlets
+    @IBOutlet private weak var logoImage: UIImageView!
     @IBOutlet private weak var usernameTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
     @IBOutlet private weak var logInButton: UIButton!
     @IBOutlet private weak var rememberMeButton: UIButton!
+    @IBOutlet private weak var rememberMeStack: UIStackView!
+    @IBOutlet private weak var logInStack: UIStackView!
     
+    // MARK: - private variables
     private var isRemeberMeButtonChecked: Bool = false
     private var user: User?
+    private var loginData: LoginData?
     
+    // MARK: - lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,8 +39,17 @@ class LoginViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        
+        prepareForAnimation()
+        resetInputFields()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        animateEverythingIn()
+    }
+    
+    
+    // MARK: - IBActions
     @IBAction func remeberMeTapped(_ sender: Any) {
         isRemeberMeButtonChecked = !isRemeberMeButtonChecked
         
@@ -62,6 +78,7 @@ class LoginViewController: UIViewController {
         loginUser(email: username, password: password)
     }
     
+    // MARK: - private functions
     private func registerUser(email: String, password: String) {
         SVProgressHUD.show()
         
@@ -110,7 +127,7 @@ class LoginViewController: UIViewController {
     }
     
     private func loginUser(email: String, password: String) {
-        SVProgressHUD.show()
+       SVProgressHUD.show()
         
         let parameters: [String: String] = [
             "email": email,
@@ -141,8 +158,10 @@ class LoginViewController: UIViewController {
                         do {
                             
                             let loggedUser = try JSONDecoder().decode(LoginData.self, from: dataBinary)
+                            
+                            self?.loginData = loggedUser
                             print("Success: \(loggedUser)")
-                            self?.navigateToHomeViewController(loginData: loggedUser)
+                            self?.animateEverythingOut()
                             
                         } catch let error {
                             print("Error: \(error)")
@@ -151,6 +170,8 @@ class LoginViewController: UIViewController {
                     case .failure(let error):
                         self?.failedLoginAlert()
                         print("API failure: \(error)")
+                        self?.usernameTextField.shake()
+                        self?.passwordTextField.shake()
                     }
         }
     }
@@ -174,5 +195,89 @@ class LoginViewController: UIViewController {
         let homeViewController = HomeViewController()
         homeViewController.loginData = loginData
         navigationController?.pushViewController(homeViewController, animated: true)
+    }
+    
+    // MARK: - animation methods
+    
+    private func prepareForAnimation() {
+        
+        logoImage.transform = CGAffineTransform.identity
+        usernameTextField.transform = CGAffineTransform.identity
+        passwordTextField.transform = CGAffineTransform.identity
+        rememberMeStack.transform = CGAffineTransform.identity
+        logInStack.transform = CGAffineTransform.identity
+    
+        logoImage.alpha = 0
+        logoImage.transform = CGAffineTransform(scaleX: 0, y: 0)
+        usernameTextField.alpha = 0
+        passwordTextField.alpha = 0
+        rememberMeStack.alpha = 0
+        logInStack.alpha = 0
+    }
+    
+    private func animateEverythingIn() {
+        UIView.animate(withDuration: 2.0, animations: {
+            self.logoImage.transform = CGAffineTransform(scaleX: 1, y: 1)
+            self.logoImage.alpha = 1
+        })
+        
+        UIView.animate(withDuration: 1.5, delay: 0.20, options: [.curveEaseInOut], animations: {
+            
+            self.usernameTextField.transform = CGAffineTransform(translationX: 50, y: 0)
+            self.usernameTextField.alpha = 1
+        })
+        
+        UIView.animate(withDuration: 1.5, delay: 0.30, options: [.curveEaseInOut], animations: {
+            
+            self.passwordTextField.transform = CGAffineTransform(translationX: 50, y: 0)
+            self.passwordTextField.alpha = 1
+        })
+        
+        UIView.animate(withDuration: 1.5, delay: 0.40, options: [.curveEaseInOut], animations: {
+            
+            self.rememberMeStack.transform = CGAffineTransform(translationX: 50, y: 0)
+            self.rememberMeStack.alpha = 1
+        })
+        
+        UIView.animate(withDuration: 1.5, delay: 0.50, options: [.curveEaseInOut], animations: {
+            
+            self.logInStack.transform = CGAffineTransform(translationX: 50, y: 0)
+            self.logInStack.alpha = 1
+        })
+
+    }
+    
+    private func animateEverythingOut() {
+        UIView.animate(withDuration: 1.5, animations: {
+            self.logoImage.transform = CGAffineTransform(translationX: 0, y: -1000)
+            self.logoImage.alpha = 0
+        })
+        
+        UIView.animate(withDuration: 1, delay: 0.3, options: [.curveEaseInOut], animations: {
+            self.usernameTextField.transform = CGAffineTransform(translationX: 0, y: -1000)
+            self.usernameTextField.alpha = 0
+        })
+        
+        UIView.animate(withDuration: 1, delay: 0.4, options: [.curveEaseInOut], animations: {
+            self.passwordTextField.transform = CGAffineTransform(translationX: 0, y: -1000)
+            self.passwordTextField.alpha = 0
+        })
+        
+        UIView.animate(withDuration: 1, delay: 0.5, options: [.curveEaseInOut], animations: {
+            self.rememberMeStack.transform = CGAffineTransform(translationX: 0, y: -1000)
+            self.rememberMeStack.alpha = 0
+        })
+        
+        UIView.animate(withDuration: 1, delay: 0.6, options: [.curveEaseInOut], animations: {
+            self.logInStack.transform = CGAffineTransform(translationX: 0, y: -1000)
+            self.logInStack.alpha = 0
+        }) { _ in
+            guard let loginData = self.loginData else {
+                return
+            }
+            
+            self.navigateToHomeViewController(loginData: loginData)
+
+        }
     }
 }
