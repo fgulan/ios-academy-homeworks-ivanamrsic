@@ -35,6 +35,8 @@ class EpisodeDetailsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         fetchEpisodeInfo()
+        
+        navigationController?.isNavigationBarHidden = true
     }
     
     // MARK: - IBActions
