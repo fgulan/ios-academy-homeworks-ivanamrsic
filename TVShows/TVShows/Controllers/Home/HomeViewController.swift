@@ -15,7 +15,7 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var showsTableView: UITableView!
     
-    var loginData: LoginData?
+    var userToken: String?
     private var shows: [Show] = []
     
     let cellReuseIdentifier = "showTableViewCell"
@@ -30,11 +30,20 @@ class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
         navigationItem.title = "Shows"
-        navigationItem.setHidesBackButton(true, animated: false)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic-logout"), style: .plain, target: self, action: #selector(logout))
+        navigationItem.leftBarButtonItem?.tintColor = .black;
         
         showsTableView.separatorColor = .white
         
         fetchTvShows()
+    }
+    
+    @objc private func logout() {
+        UserDefaults.standard.removeObject(forKey: "userToken")
+    
+        let loginViewController = LoginViewController()
+        
+        navigationController?.setViewControllers([loginViewController],animated: true)
     }
     
     private func setupTableView() {
@@ -46,11 +55,11 @@ class HomeViewController: UIViewController {
     private func fetchTvShows() {
         SVProgressHUD.show()
         
-        guard let loginData = loginData else {
+        guard let userToken = self.userToken else {
             return
         }
         
-        let headers = ["Authorization": loginData.token]
+        let headers = ["Authorization": userToken]
      
         Alamofire
             .request(Constants.URL.fetchShows,
@@ -75,8 +84,8 @@ class HomeViewController: UIViewController {
     private func navigateToShowDetails(row: Int) {
         let showDetailsViewController = ShowDetailsViewController()
         showDetailsViewController.showId = shows[row].id
-        showDetailsViewController.token = self.loginData?.token
-        self.navigationController?.pushViewController(showDetailsViewController, animated: true)
+        showDetailsViewController.token = self.userToken
+        navigationController?.pushViewController(showDetailsViewController, animated: true)
     }
 }
 

@@ -161,6 +161,13 @@ class LoginViewController: UIViewController {
                             
                             self?.loginData = loggedUser
                             print("Success: \(loggedUser)")
+                            
+                            if let isRemeberMeButtonChecked = self?.isRemeberMeButtonChecked {
+                                if isRemeberMeButtonChecked {
+                                    UserDefaults.standard.set(self?.loginData?.token, forKey: "userToken")
+                                }
+                            }
+                            
                             self?.animateEverythingOut()
                             
                         } catch let error {
@@ -193,7 +200,7 @@ class LoginViewController: UIViewController {
     
     private func navigateToHomeViewController(loginData: LoginData) {
         let homeViewController = HomeViewController()
-        homeViewController.loginData = loginData
+        homeViewController.userToken = loginData.token
         navigationController?.pushViewController(homeViewController, animated: true)
     }
     
