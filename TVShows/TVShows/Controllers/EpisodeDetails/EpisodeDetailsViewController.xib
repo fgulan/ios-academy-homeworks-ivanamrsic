@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EpisodeDetailsViewController" customModule="TVShows" customModuleProvider="target">
+            <connections>
+                <outlet property="descriptionLabel" destination="mU2-sA-RUE" id="Hdh-eD-Csc"/>
+                <outlet property="episodeImageView" destination="fHj-9L-6Nx" id="3Nr-7F-xh0"/>
+                <outlet property="episodeNameLabel" destination="MaS-pw-2u4" id="iYr-n6-rNa"/>
+                <outlet property="episodeNumberLabel" destination="ITN-MB-o6L" id="EdM-es-l3r"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fHj-9L-6Nx">
+                    <rect key="frame" x="0.0" y="20" width="375" height="333.5"/>
+                </imageView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="YdZ-Sh-n3g" userLabel="InfoStack">
+                    <rect key="frame" x="19" y="353.5" width="337.5" height="313.5"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EpisodeName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MaS-pw-2u4">
+                            <rect key="frame" x="0.0" y="0.0" width="180.5" height="47"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EpisodeNo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ITN-MB-o6L">
+                            <rect key="frame" x="0.0" y="47" width="83" height="60"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="1" green="0.45882352941176469" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mU2-sA-RUE">
+                            <rect key="frame" x="0.0" y="107" width="88" height="60"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qoH-GL-B50">
+                            <rect key="frame" x="0.0" y="167" width="75" height="146.5"/>
+                            <state key="normal" title="Comments"/>
+                            <connections>
+                                <action selector="commentsTapped:" destination="-1" eventType="touchUpInside" id="0of-ms-EcU"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="ITN-MB-o6L" firstAttribute="leading" secondItem="MaS-pw-2u4" secondAttribute="leading" id="iEc-uY-3JZ"/>
+                        <constraint firstItem="MaS-pw-2u4" firstAttribute="height" secondItem="YdZ-Sh-n3g" secondAttribute="height" multiplier="0.15" id="vGg-3X-2rM"/>
+                    </constraints>
+                </stackView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9rD-m0-aAg">
+                    <rect key="frame" x="20" y="40" width="32" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" backgroundImage="ic-navigate-back"/>
+                    <connections>
+                        <action selector="backTapped:" destination="-1" eventType="touchUpInside" id="J8m-id-LZ7"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="fHj-9L-6Nx" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="07N-hp-jhP"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="YdZ-Sh-n3g" secondAttribute="bottom" id="0BH-ZM-mhE"/>
+                <constraint firstItem="YdZ-Sh-n3g" firstAttribute="top" secondItem="fHj-9L-6Nx" secondAttribute="bottom" id="E41-rf-CWT"/>
+                <constraint firstItem="YdZ-Sh-n3g" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.9" id="Fpi-Ee-IK6"/>
+                <constraint firstItem="fHj-9L-6Nx" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Y5U-ga-2Qc"/>
+                <constraint firstItem="fHj-9L-6Nx" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="arh-BV-Qek"/>
+                <constraint firstItem="fHj-9L-6Nx" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.5" id="pqe-Qa-HRZ"/>
+                <constraint firstItem="YdZ-Sh-n3g" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="u9h-qP-nn6"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic-navigate-back" width="32" height="32"/>
+    </resources>
+</document>

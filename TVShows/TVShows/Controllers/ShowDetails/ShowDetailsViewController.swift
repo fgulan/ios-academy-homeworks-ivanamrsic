@@ -137,6 +137,16 @@ extension ShowDetailsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if (indexPath.row > NUMBER_OF_INFO_CELLS - 1) {
+            let episodeDetailsViewController = EpisodeDetailsViewController()
+            episodeDetailsViewController.episodeId = episodes[indexPath.row - 2].id 
+            
+            navigationController?.pushViewController(episodeDetailsViewController, animated: true)
+        }
+    }
 }
 
 extension ShowDetailsViewController: UITableViewDataSource {
