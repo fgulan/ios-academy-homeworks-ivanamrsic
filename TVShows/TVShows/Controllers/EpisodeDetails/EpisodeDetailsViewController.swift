@@ -39,6 +39,10 @@ class EpisodeDetailsViewController: UIViewController {
     
     // MARK: - IBActions
     @IBAction func commentsTapped(_ sender: Any) {
+        let commentsViewController = CommentsViewController()
+        commentsViewController.episodeId = episodeId
+        
+        navigationController?.pushViewController(commentsViewController, animated: true)
     }
     
     @IBAction func backTapped(_ sender: Any) {

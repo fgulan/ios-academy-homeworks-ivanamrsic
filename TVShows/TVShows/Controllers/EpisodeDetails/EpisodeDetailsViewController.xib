@@ -43,14 +43,14 @@
                             <color key="textColor" red="1" green="0.45882352941176469" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mU2-sA-RUE">
-                            <rect key="frame" x="0.0" y="107" width="88" height="60"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mU2-sA-RUE">
+                            <rect key="frame" x="0.0" y="107" width="88" height="159.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qoH-GL-B50">
-                            <rect key="frame" x="0.0" y="167" width="75" height="146.5"/>
+                            <rect key="frame" x="0.0" y="266.5" width="75" height="47"/>
                             <state key="normal" title="Comments"/>
                             <connections>
                                 <action selector="commentsTapped:" destination="-1" eventType="touchUpInside" id="0of-ms-EcU"/>
@@ -58,6 +58,7 @@
                         </button>
                     </subviews>
                     <constraints>
+                        <constraint firstItem="qoH-GL-B50" firstAttribute="height" secondItem="YdZ-Sh-n3g" secondAttribute="height" multiplier="0.15" id="6MT-ev-AwQ"/>
                         <constraint firstItem="ITN-MB-o6L" firstAttribute="leading" secondItem="MaS-pw-2u4" secondAttribute="leading" id="iEc-uY-3JZ"/>
                         <constraint firstItem="MaS-pw-2u4" firstAttribute="height" secondItem="YdZ-Sh-n3g" secondAttribute="height" multiplier="0.15" id="vGg-3X-2rM"/>
                     </constraints>

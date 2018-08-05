@@ -22,6 +22,11 @@
 		A8541B2F2117306100B35D75 /* UIView+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8541B2E2117306100B35D75 /* UIView+Shadow.swift */; };
 		A8541B332117489B00B35D75 /* EpisodeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8541B312117489B00B35D75 /* EpisodeDetailsViewController.swift */; };
 		A8541B342117489B00B35D75 /* EpisodeDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8541B322117489B00B35D75 /* EpisodeDetailsViewController.xib */; };
+		A8541B362117588300B35D75 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8541B352117588300B35D75 /* Comment.swift */; };
+		A8541B3A211758E300B35D75 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8541B38211758E300B35D75 /* CommentsViewController.swift */; };
+		A8541B3B211758E300B35D75 /* CommentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8541B39211758E300B35D75 /* CommentsViewController.xib */; };
+		A8541B3F21175B0800B35D75 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8541B3D21175B0700B35D75 /* CommentTableViewCell.swift */; };
+		A8541B4021175B0800B35D75 /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8541B3E21175B0800B35D75 /* CommentTableViewCell.xib */; };
 		A886BA712107AD1F0085EBEF /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = A886BA702107AD1F0085EBEF /* Show.swift */; };
 		A8DF0C952107C334002B83CD /* ShowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DF0C932107C334002B83CD /* ShowTableViewCell.swift */; };
 		A8DF0C962107C334002B83CD /* ShowTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DF0C942107C334002B83CD /* ShowTableViewCell.xib */; };
@@ -57,6 +62,11 @@
 		A8541B2E2117306100B35D75 /* UIView+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shadow.swift"; sourceTree = "<group>"; };
 		A8541B312117489B00B35D75 /* EpisodeDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailsViewController.swift; sourceTree = "<group>"; };
 		A8541B322117489B00B35D75 /* EpisodeDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EpisodeDetailsViewController.xib; sourceTree = "<group>"; };
+		A8541B352117588300B35D75 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		A8541B38211758E300B35D75 /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
+		A8541B39211758E300B35D75 /* CommentsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentsViewController.xib; sourceTree = "<group>"; };
+		A8541B3D21175B0700B35D75 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		A8541B3E21175B0800B35D75 /* CommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
 		A886BA702107AD1F0085EBEF /* Show.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Show.swift; sourceTree = "<group>"; };
 		A8DF0C932107C334002B83CD /* ShowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTableViewCell.swift; sourceTree = "<group>"; };
 		A8DF0C942107C334002B83CD /* ShowTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowTableViewCell.xib; sourceTree = "<group>"; };
@@ -125,6 +135,7 @@
 				A886BA702107AD1F0085EBEF /* Show.swift */,
 				A8DF0CC021090CDF002B83CD /* ShowInfo.swift */,
 				A8DF0CC221091686002B83CD /* Episode.swift */,
+				A8541B352117588300B35D75 /* Comment.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -174,9 +185,29 @@
 			path = EpisodeDetails;
 			sourceTree = "<group>";
 		};
+		A8541B37211758CE00B35D75 /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+				A8541B3C21175AEF00B35D75 /* Cells */,
+				A8541B38211758E300B35D75 /* CommentsViewController.swift */,
+				A8541B39211758E300B35D75 /* CommentsViewController.xib */,
+			);
+			path = Comments;
+			sourceTree = "<group>";
+		};
+		A8541B3C21175AEF00B35D75 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A8541B3D21175B0700B35D75 /* CommentTableViewCell.swift */,
+				A8541B3E21175B0800B35D75 /* CommentTableViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		A8DF0CAD2108D42D002B83CD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A8541B37211758CE00B35D75 /* Comments */,
 				A8541B302117488500B35D75 /* EpisodeDetails */,
 				A814FF5F210A426300B21DA7 /* AddEpisode */,
 				A8DF0CAE2108D460002B83CD /* ShowDetails */,
@@ -316,10 +347,12 @@
 				A8ECC61F20EE6F2200E76676 /* Assets.xcassets in Resources */,
 				A814FF63210A427700B21DA7 /* AddEpisodeViewController.xib in Resources */,
 				A8DF0CB62108DCD2002B83CD /* ShowImageTableViewCell.xib in Resources */,
+				A8541B4021175B0800B35D75 /* CommentTableViewCell.xib in Resources */,
 				A8DF0C962107C334002B83CD /* ShowTableViewCell.xib in Resources */,
 				A8DF0CBF2108DD32002B83CD /* EpisodeTableViewCell.xib in Resources */,
 				A8DF0CBA2108DD07002B83CD /* DescriptionTableViewCell.xib in Resources */,
 				A8541B342117489B00B35D75 /* EpisodeDetailsViewController.xib in Resources */,
+				A8541B3B211758E300B35D75 /* CommentsViewController.xib in Resources */,
 				A842D77E20FB958800143F65 /* LoginViewController.xib in Resources */,
 				A8DF0CB22108D492002B83CD /* ShowDetailsViewController.xib in Resources */,
 				A842D85F20FFAED600143F65 /* HomeViewController.xib in Resources */,
@@ -395,6 +428,7 @@
 			files = (
 				A842D86220FFB28000143F65 /* User.swift in Sources */,
 				A8541B332117489B00B35D75 /* EpisodeDetailsViewController.swift in Sources */,
+				A8541B3A211758E300B35D75 /* CommentsViewController.swift in Sources */,
 				A842D86420FFBDA600143F65 /* LoginData.swift in Sources */,
 				A8DF0CB92108DD07002B83CD /* DescriptionTableViewCell.swift in Sources */,
 				A8DF0CB52108DCD2002B83CD /* ShowImageTableViewCell.swift in Sources */,
@@ -403,11 +437,13 @@
 				A8DF0CC121090CDF002B83CD /* ShowInfo.swift in Sources */,
 				A8541AE9210F88C400B35D75 /* Constants.swift in Sources */,
 				A886BA712107AD1F0085EBEF /* Show.swift in Sources */,
+				A8541B3F21175B0800B35D75 /* CommentTableViewCell.swift in Sources */,
 				A8ECC61820EE6F2100E76676 /* AppDelegate.swift in Sources */,
 				A8DF0CC321091686002B83CD /* Episode.swift in Sources */,
 				A8541B2D21171D9900B35D75 /* UIView+Shake.swift in Sources */,
 				A814FF62210A427700B21DA7 /* AddEpisodeViewController.swift in Sources */,
 				A8DF0C952107C334002B83CD /* ShowTableViewCell.swift in Sources */,
+				A8541B362117588300B35D75 /* Comment.swift in Sources */,
 				A8DF0CBE2108DD32002B83CD /* EpisodeTableViewCell.swift in Sources */,
 				A8DF0CB12108D492002B83CD /* ShowDetailsViewController.swift in Sources */,
 				A8541B2F2117306100B35D75 /* UIView+Shadow.swift in Sources */,

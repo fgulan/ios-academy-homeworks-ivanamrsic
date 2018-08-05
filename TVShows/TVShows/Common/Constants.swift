@@ -34,5 +34,11 @@ enum Constants {
         static func constructFetchEpisodeInfoUrl(episodeId: String) -> String {
             return episodes + "/" + episodeId
         }
+        
+        static func constructFetchEpisodeCommentsUrl(episodeId: String) -> String {
+            let baseEpisodeUrl = constructFetchEpisodeInfoUrl(episodeId: episodeId)
+            
+            return baseEpisodeUrl + "/comments"
+        }
     }
 }
