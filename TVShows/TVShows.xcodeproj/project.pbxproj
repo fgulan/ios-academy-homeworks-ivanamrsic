@@ -27,6 +27,7 @@
 		A8541B3B211758E300B35D75 /* CommentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8541B39211758E300B35D75 /* CommentsViewController.xib */; };
 		A8541B3F21175B0800B35D75 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8541B3D21175B0700B35D75 /* CommentTableViewCell.swift */; };
 		A8541B4021175B0800B35D75 /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8541B3E21175B0800B35D75 /* CommentTableViewCell.xib */; };
+		A8541B442117943C00B35D75 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8541B432117943C00B35D75 /* Media.swift */; };
 		A886BA712107AD1F0085EBEF /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = A886BA702107AD1F0085EBEF /* Show.swift */; };
 		A8DF0C952107C334002B83CD /* ShowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DF0C932107C334002B83CD /* ShowTableViewCell.swift */; };
 		A8DF0C962107C334002B83CD /* ShowTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DF0C942107C334002B83CD /* ShowTableViewCell.xib */; };
@@ -67,6 +68,7 @@
 		A8541B39211758E300B35D75 /* CommentsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentsViewController.xib; sourceTree = "<group>"; };
 		A8541B3D21175B0700B35D75 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		A8541B3E21175B0800B35D75 /* CommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
+		A8541B432117943C00B35D75 /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		A886BA702107AD1F0085EBEF /* Show.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Show.swift; sourceTree = "<group>"; };
 		A8DF0C932107C334002B83CD /* ShowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTableViewCell.swift; sourceTree = "<group>"; };
 		A8DF0C942107C334002B83CD /* ShowTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowTableViewCell.xib; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				A8DF0CC021090CDF002B83CD /* ShowInfo.swift */,
 				A8DF0CC221091686002B83CD /* Episode.swift */,
 				A8541B352117588300B35D75 /* Comment.swift */,
+				A8541B432117943C00B35D75 /* Media.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -432,6 +435,7 @@
 				A842D86420FFBDA600143F65 /* LoginData.swift in Sources */,
 				A8DF0CB92108DD07002B83CD /* DescriptionTableViewCell.swift in Sources */,
 				A8DF0CB52108DCD2002B83CD /* ShowImageTableViewCell.swift in Sources */,
+				A8541B442117943C00B35D75 /* Media.swift in Sources */,
 				A842D77D20FB958800143F65 /* LoginViewController.swift in Sources */,
 				A842D88121011C3500143F65 /* UITextField+Border.swift in Sources */,
 				A8DF0CC121090CDF002B83CD /* ShowInfo.swift in Sources */,

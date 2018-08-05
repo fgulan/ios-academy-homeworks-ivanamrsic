@@ -17,22 +17,32 @@ protocol AddEpisodeDelegate {
     func updateEpisodeList(episode: Episode)
 }
 
-class AddEpisodeViewController: UIViewController {
+class AddEpisodeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var episodeTitleInputText: UITextField!
     @IBOutlet weak var seasonNumberInputText: UITextField!
     @IBOutlet weak var episodeNumberInputText: UITextField!
     @IBOutlet weak var episodeDescriptionInputText: UITextField!
+    @IBOutlet weak var imageView: UIImageView!
     
     var delegate: AddEpisodeDelegate?
     
     var showId: String?
     var token: String?
+    private var mediaId: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupViewController()
+    }
+
+    @IBAction func uploadPhotoTapped(_ sender: Any) {
+        let picker = UIImagePickerController()
+        picker.sourceType = .savedPhotosAlbum
+        picker.allowsEditing = true
+        picker.delegate = self
+        self.present(picker, animated: true)
     }
     
     @objc func didSelectCancel() {
@@ -43,6 +53,45 @@ class AddEpisodeViewController: UIViewController {
         addEpisode()
     }
     
+    private func addMedia(image: UIImage) {
+        guard let token = token else {
+            return
+        }
+        
+        let headers = ["Authorization": token]
+        let imageByteData = UIImagePNGRepresentation(image)!
+        
+        Alamofire
+            .upload(multipartFormData: { multipartFormData in
+                multipartFormData.append(imageByteData,
+                                         withName: "file", fileName: "image.png",
+                                         mimeType: "image/png")
+            }, to: Constants.URL.postMedia,
+               method: .post,
+               headers: headers)
+            { [weak self] result in
+                switch result {
+                case .success(let uploadRequest, _, _):
+                    self?.processUploadRequest(uploadRequest)
+                case .failure(let encodingError):
+                    print(encodingError)
+                } }
+    }
+
+    func processUploadRequest(_ uploadRequest: UploadRequest) {
+        uploadRequest .responseDecodableObject(keyPath: "data") { (response:
+            DataResponse<Media>) in
+            switch response.result {
+            case .success(let media):
+                print("DECODED: \(media)")
+                self.mediaId = media.id
+                print("Proceed to add episode call...")
+            case .failure(let error):
+                print("FAILURE: \(error)")
+            }
+        }
+    }
+    
     private func addEpisode() {
         SVProgressHUD.show()
         
@@ -51,7 +100,8 @@ class AddEpisodeViewController: UIViewController {
             let episodeDescriptionText = episodeDescriptionInputText.text,
             let episodeNumberText = episodeNumberInputText.text,
             let seasonNumberText = seasonNumberInputText.text,
-            let token = token
+            let token = token,
+            let mediaId = mediaId
         else {
             return
         }
@@ -61,7 +111,8 @@ class AddEpisodeViewController: UIViewController {
             "title": episodeTitleText,
             "description": episodeDescriptionText,
             "episodeNumber": episodeNumberText,
-            "season": seasonNumberText
+            "season": seasonNumberText,
+            "mediaId": mediaId
         ]
         
         let headers = ["Authorization": token]
@@ -114,5 +165,19 @@ class AddEpisodeViewController: UIViewController {
         seasonNumberInputText.setBottomBorder()
         episodeNumberInputText.setBottomBorder()
         episodeDescriptionInputText.setBottomBorder()
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let pickedImage = info["UIImagePickerControllerEditedImage"] as? UIImage
+        guard let image = pickedImage else {
+            return
+        }
+        imageView.image = image
+        addMedia(image: image)
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+       // <#code#>
     }
 }
