@@ -20,6 +20,44 @@ class CommentsViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var commentsTableView: UITableView!
     
     @IBAction func postTapped(_ sender: Any) {
+        SVProgressHUD.show()
+        
+        guard let episodeId = episodeId, let comment = addCommentTextField.text else {
+                return
+        }
+        
+        let parameters: [String: String] = [
+            "text": comment,
+            "episodeId": episodeId,
+        ]
+        
+        guard let token = UserDefaults.standard.value(forKey: "userToken") else {
+            return
+        }
+        
+        let headers = ["Authorization": token as! String]
+        
+        Alamofire
+            .request(Constants.URL.postComments,
+                     method: .post,
+                     parameters: parameters,
+                     encoding: JSONEncoding.default,
+                     headers:headers)
+            .validate()
+            .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) { [weak self] (dataResponse: DataResponse<Comment>) in
+                
+                SVProgressHUD.dismiss()
+                
+                switch dataResponse.result {
+                case .success(let comment):
+                    self?.comments.append(comment)
+                    self?.textFieldShouldReturn((self?.addCommentTextField)!)
+                    self?.addCommentTextField.text = ""
+                    self?.commentsTableView.reloadData()
+                case .failure(let error):
+                    print("API failure: \(error)")
+                }
+        }
     }
     
     var episodeId: String?
@@ -41,10 +79,9 @@ class CommentsViewController: UIViewController, UITextFieldDelegate {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic-navigate-back"), style: .plain, target: self, action: #selector(navigateBack))
         navigationItem.leftBarButtonItem?.tintColor = .black;
         
-        //commentsTableView.separatorColor = .white
-        
         addCommentTextField.layer.cornerRadius = 50
         
+        addCommentTextField.delegate = self
         
         let center = NotificationCenter.default
         center.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: Notification.Name.UIKeyboardWillShow, object: nil)
@@ -60,11 +97,7 @@ class CommentsViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func keyboardWillHide(notification: Notification) {
-        guard let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
-            return
-        }
-        
-        postStackBottomConstraint.constant = -keyboardSize.height
+        postStackBottomConstraint.constant = 0
     }
     
     private func setupTableView() {
@@ -104,7 +137,7 @@ class CommentsViewController: UIViewController, UITextFieldDelegate {
                 case .success(let comments):
                     self?.comments = comments
                     //print(comments)
-                    
+                    self?.addCommentTextField.resignFirstResponder()
                     self?.commentsTableView.reloadData()
                 case .failure(let error):
                     print("API failure: \(error)")

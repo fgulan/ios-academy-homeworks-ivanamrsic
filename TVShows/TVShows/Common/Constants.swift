@@ -18,6 +18,7 @@ enum Constants {
         static let loginUser = baseUrl + "/users/sessions"
         static let fetchShows = baseUrl + "/shows"
         static let episodes = baseUrl + "/episodes"
+        static let postComments = baseUrl + "/comments"
      
         static func constructFetchShowInfoUrl(showId: String) -> String {
             return fetchShows + "/" + showId
