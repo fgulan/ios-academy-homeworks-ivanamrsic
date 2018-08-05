@@ -19,6 +19,7 @@
 		A842D88121011C3500143F65 /* UITextField+Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = A842D88021011C3500143F65 /* UITextField+Border.swift */; };
 		A8541AE9210F88C400B35D75 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8541AE8210F88C400B35D75 /* Constants.swift */; };
 		A8541B2D21171D9900B35D75 /* UIView+Shake.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8541B2C21171D9900B35D75 /* UIView+Shake.swift */; };
+		A8541B2F2117306100B35D75 /* UIView+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8541B2E2117306100B35D75 /* UIView+Shadow.swift */; };
 		A886BA712107AD1F0085EBEF /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = A886BA702107AD1F0085EBEF /* Show.swift */; };
 		A8DF0C952107C334002B83CD /* ShowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DF0C932107C334002B83CD /* ShowTableViewCell.swift */; };
 		A8DF0C962107C334002B83CD /* ShowTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8DF0C942107C334002B83CD /* ShowTableViewCell.xib */; };
@@ -51,6 +52,7 @@
 		A842D88021011C3500143F65 /* UITextField+Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Border.swift"; sourceTree = "<group>"; };
 		A8541AE8210F88C400B35D75 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A8541B2C21171D9900B35D75 /* UIView+Shake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shake.swift"; sourceTree = "<group>"; };
+		A8541B2E2117306100B35D75 /* UIView+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shadow.swift"; sourceTree = "<group>"; };
 		A886BA702107AD1F0085EBEF /* Show.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Show.swift; sourceTree = "<group>"; };
 		A8DF0C932107C334002B83CD /* ShowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTableViewCell.swift; sourceTree = "<group>"; };
 		A8DF0C942107C334002B83CD /* ShowTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowTableViewCell.xib; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			children = (
 				A842D88021011C3500143F65 /* UITextField+Border.swift */,
 				A8541B2C21171D9900B35D75 /* UIView+Shake.swift */,
+				A8541B2E2117306100B35D75 /* UIView+Shadow.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 				A8DF0C952107C334002B83CD /* ShowTableViewCell.swift in Sources */,
 				A8DF0CBE2108DD32002B83CD /* EpisodeTableViewCell.swift in Sources */,
 				A8DF0CB12108D492002B83CD /* ShowDetailsViewController.swift in Sources */,
+				A8541B2F2117306100B35D75 /* UIView+Shadow.swift in Sources */,
 				A842D85E20FFAED600143F65 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

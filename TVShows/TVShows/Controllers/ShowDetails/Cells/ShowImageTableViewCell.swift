@@ -13,25 +13,17 @@ class ShowImageTableViewCell: UITableViewCell {
 
     @IBOutlet weak var showImageView: UIImageView!
     
-    var imageUrl: String?
-    
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        showImageView.image = UIImage(named: "silicon-valley")
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        imageUrl = ""
     }
     
-    func setup() {
-        //        guard let imageUrl = imageUrl else {
-        //            return
-        //        }
-        //        let url = URL(string: imageUrl)
-        //        showImageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "login-logo"))
+    func setup(imageUrl: String) {
+        let url = URL(string: Constants.URL.constructFetchShowImageUrl(imageUrl: imageUrl))
+        showImageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "login-logo"))
     }
 }
 

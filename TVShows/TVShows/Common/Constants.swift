@@ -25,5 +25,9 @@ enum Constants {
         static func constructFetchShowEpisodesUrl(showId: String) -> String {
             return URL.fetchShows + "/" + showId + "/episodes"
         }
+        
+        static func constructFetchShowImageUrl(imageUrl: String) -> String {
+            return URL.baseDomainUrl + "/" + imageUrl
+        }
     }
 }

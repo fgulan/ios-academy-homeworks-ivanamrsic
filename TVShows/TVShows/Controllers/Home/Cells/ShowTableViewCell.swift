@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ShowTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var showImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        showImage.addShadow()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -27,5 +31,8 @@ class ShowTableViewCell: UITableViewCell {
 
     func setup(show: Show) {
         titleLabel.text = show.title
+
+        let url = URL(string: Constants.URL.constructFetchShowImageUrl(imageUrl: show.imageUrl))
+        showImage.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "login-logo"))
     }
 }

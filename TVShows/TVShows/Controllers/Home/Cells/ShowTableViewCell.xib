@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,24 +16,32 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="showTableViewCell" id="KGk-i7-Jjw" customClass="ShowTableViewCell" customModule="TVShows" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c53-F5-8HR">
+                        <rect key="frame" x="5" y="2.5" width="96" height="37"/>
+                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bTx-jq-24Y" userLabel="Title">
-                        <rect key="frame" x="139" y="11" width="42" height="21"/>
+                        <rect key="frame" x="106" y="5" width="42" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="bTx-jq-24Y" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="O7H-fR-r7o"/>
-                    <constraint firstItem="bTx-jq-24Y" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Xf5-0P-Ehy"/>
+                    <constraint firstItem="c53-F5-8HR" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.3" id="H17-qu-gra"/>
+                    <constraint firstItem="bTx-jq-24Y" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="J2Q-w2-Biz"/>
+                    <constraint firstItem="c53-F5-8HR" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.85" id="Yy1-aE-MA1"/>
+                    <constraint firstItem="bTx-jq-24Y" firstAttribute="leading" secondItem="c53-F5-8HR" secondAttribute="trailing" constant="5" id="cpT-R8-jAg"/>
+                    <constraint firstItem="c53-F5-8HR" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="wLY-KE-qYT"/>
+                    <constraint firstItem="c53-F5-8HR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="yp5-U5-vtv"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="showImage" destination="c53-F5-8HR" id="adA-z7-YM0"/>
                 <outlet property="titleLabel" destination="bTx-jq-24Y" id="oy8-li-3Hf"/>
             </connections>
         </tableViewCell>

@@ -177,7 +177,10 @@ extension ShowDetailsViewController : AddEpisodeDelegate {
 // MARK:- setup
 extension ShowDetailsViewController {
     func setUpImageCell(indexPath: IndexPath) -> ShowImageTableViewCell {
+        let imageUrl = showInfo?.imageUrl ?? ""
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: showImageCellIdentifier, for: indexPath) as! ShowImageTableViewCell
+        cell.setup(imageUrl: imageUrl)
         return cell
     }
     
