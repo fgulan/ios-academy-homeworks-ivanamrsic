@@ -13,11 +13,15 @@ struct Episode: Codable {
     let description: String
     let imageUrl: String
     let id: String
+    let episodeNumber: String?
+    let season: String?
     
     enum CodingKeys: String, CodingKey {
         case id = "_id"
         case title
         case description
         case imageUrl
+        case episodeNumber
+        case season
     }
 }

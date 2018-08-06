@@ -13,23 +13,16 @@ class DescriptionTableViewCell: UITableViewCell {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var countLabel: UILabel!
-    
-    var title: String?
-    var episodeDescription: String?
-    var count: String?
-    
+
     override func prepareForReuse() {
         titleLabel.text = ""
         countLabel.text = ""
         descriptionLabel.text = ""
-        title = ""
-        count = ""
-        episodeDescription = ""
     }
 
-    func setup() {        
+    func setup(title: String, description: String, episodeCount: String) {
         titleLabel.text = title
-        descriptionLabel.text = episodeDescription
-        countLabel.text = count
+        descriptionLabel.text = description
+        countLabel.text = episodeCount
     }
 }

@@ -11,13 +11,11 @@ import SVProgressHUD
 import Alamofire
 import CodableAlamofire
 
-let FETCH_SHOWS_URL = "https://api.infinum.academy/api/shows"
-
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var showsTableView: UITableView!
     
-    var loginData: LoginData?
+    var userToken: String?
     private var shows: [Show] = []
     
     let cellReuseIdentifier = "showTableViewCell"
@@ -30,9 +28,22 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+        navigationItem.title = "Shows"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic-logout"), style: .plain, target: self, action: #selector(logout))
+        navigationItem.leftBarButtonItem?.tintColor = .black;
+        
+        showsTableView.separatorColor = .white
         
         fetchTvShows()
+    }
+    
+    @objc private func logout() {
+        UserDefaults.standard.removeObject(forKey: "userToken")
+    
+        let loginViewController = LoginViewController()
+        
+        navigationController?.setViewControllers([loginViewController],animated: true)
     }
     
     private func setupTableView() {
@@ -44,14 +55,14 @@ class HomeViewController: UIViewController {
     private func fetchTvShows() {
         SVProgressHUD.show()
         
-        guard let loginData = loginData else {
+        guard let userToken = self.userToken else {
             return
         }
         
-        let headers = ["Authorization": loginData.token]
+        let headers = ["Authorization": userToken]
      
         Alamofire
-            .request(FETCH_SHOWS_URL,
+            .request(Constants.URL.fetchShows,
                      method: .get,
                      encoding: JSONEncoding.default,
                      headers: headers)
@@ -73,28 +84,20 @@ class HomeViewController: UIViewController {
     private func navigateToShowDetails(row: Int) {
         let showDetailsViewController = ShowDetailsViewController()
         showDetailsViewController.showId = shows[row].id
-        showDetailsViewController.token = self.loginData?.token
-        self.navigationController?.pushViewController(showDetailsViewController, animated: true)
+        showDetailsViewController.token = self.userToken
+        navigationController?.pushViewController(showDetailsViewController, animated: true)
     }
 }
 
 extension HomeViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Shows"
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 100
-    }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
 
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
-            self.shows.remove(at: indexPath.row)
-            self.showsTableView.deleteRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.automatic)
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { [weak self] (action, indexPath) in
+            self?.shows.remove(at: indexPath.row)
+            self?.showsTableView.deleteRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.automatic)
         }
         return [delete]
     }

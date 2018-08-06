@@ -19,15 +19,20 @@
                 <rect key="frame" x="0.0" y="0.0" width="304" height="99.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qre-gj-8Pn">
-                        <rect key="frame" x="0.0" y="0.0" width="304" height="99.5"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qre-gj-8Pn">
+                        <rect key="frame" x="0.0" y="0.0" width="304" height="350.5"/>
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="350" id="2aI-4f-OEr"/>
+                        </constraints>
                     </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="qre-gj-8Pn" secondAttribute="trailing" id="efE-aC-oLx"/>
+                    <constraint firstItem="qre-gj-8Pn" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="gZW-4B-YDg"/>
                     <constraint firstItem="qre-gj-8Pn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="gvH-75-eBC"/>
                     <constraint firstItem="qre-gj-8Pn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="jz4-z7-h5H"/>
+                    <constraint firstItem="qre-gj-8Pn" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="mYC-Gj-luc"/>
                     <constraint firstAttribute="bottom" secondItem="qre-gj-8Pn" secondAttribute="bottom" id="ssZ-1h-6qV"/>
                 </constraints>
             </tableViewCellContentView>
